@@ -6,6 +6,7 @@
   ↓LinkedInApi [connectors.HttpConnector]: 🗏 connectors/LinkedInApi.yaml
   ↓LinkedInOAuth [connectors.HttpConnector]: 🗏 connectors/LinkedInOAuth.yaml
   ↓MicrosoftGraphApi [connectors.HttpConnector]: 🗏 connectors/MicrosoftGraphApi.yaml
+  ↓checkAccessOpenID [sequences.GenericSequence]: 🗏 sequences/checkAccessOpenID.yaml
   ↓checkAccessToken [sequences.GenericSequence]: 🗏 sequences/checkAccessToken.yaml
   ↓checkAccessTokenGoogle [sequences.GenericSequence]: 🗏 sequences/checkAccessTokenGoogle.yaml
   ↓checkAccessTokenLinkedIn [sequences.GenericSequence]: 🗏 sequences/checkAccessTokenLinkedIn.yaml
