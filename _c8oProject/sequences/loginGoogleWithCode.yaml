@@ -66,6 +66,9 @@ comment: |
         - java.lang.String: 
           - ↑value: ./document/object/id_token
   ↓jThen [steps.ThenStep-1572766265540]: 
+    ↓login [steps.XMLElementStep-1602831342500]: 
+      nodeName: login
+      nodeText: ok
     ↓id_token [steps.SimpleSourceStep-1572733085248]: 
       sourceDefinition: 
         - xmlizable: 
@@ -90,10 +93,23 @@ comment: |
       key: oAuthAccessToken
     ↓DecodeJWT [steps.SimpleStep-1572733146595]: 
       expression: |
-        b64 = id_token.split('.')[1];
-        db64 = JSON.parse(com.twinsoft.convertigo.engine.util.Base64.decodeToString(b64));
-        gid = "google:" + db64.sub + ":" + db64.email;
+        '//imports
+        var xmlUtils = use("com.twinsoft.convertigo.engine.util.XMLUtils");
         
+        //code
+        b64 = id_token.split(''.'')[1];
+        // hack of the hell (google gives us a JSON without ending)
+        try{
+        	db64 = JSON.parse(com.twinsoft.convertigo.engine.util.Base64.decodeToString(b64));
+        }
+        catch(e){
+        	db64 = JSON.parse(com.twinsoft.convertigo.engine.util.Base64.decodeToString(b64)+''}'');
+        }
+        // Convert JSON to XML and attach it to main document
+        var jsonObject = new org.codehaus.jettison.json.JSONObject(JSON.stringify(db64));
+        xmlUtils.jsonToXml(jsonObject, "object", dom.getDocumentElement(), false, true, "item");
+        gid = "google:" + db64.sub + ":" + db64.email;
+        '
     ↓Set_authenticated_user [steps.SetAuthenticatedUserStep-1572733684513]: 
       userid: 
         - xmlizable: 
@@ -102,8 +118,12 @@ comment: |
             - ↑mode: JS
             - →→: gid
     ↓jElement [steps.ElementStep-1572734404995]: 
+      comment: Still there to support old api (replaced by authUser in new one)
       expression: gid
       nodeName: decodedToken
+    ↓jElement1 [steps.ElementStep-1602831362621]: 
+      expression: gid
+      nodeName: authUser
   ↓jElse [steps.ElseStep-1572766265542]: 
     ↓Copy [steps.XMLCopyStep-1572766330780]: 
       sourceDefinition: 
