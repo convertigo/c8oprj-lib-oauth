@@ -3,6 +3,7 @@ port: 443
 server: www.linkedin.com
 ↓Authorize [transactions.JsonHttpTransaction]: 
   ↑default: true
+  httpPool: global
   httpVerb: POST
   subDir: oauth/v2/accessToken
   ↓grant_type [variables.RequestableHttpVariable-1516297219331]: 

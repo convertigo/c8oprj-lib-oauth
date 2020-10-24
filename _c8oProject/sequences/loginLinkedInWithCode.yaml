@@ -105,6 +105,17 @@ comment: |
     ↓login [steps.XMLElementStep-1516353106846]: 
       nodeName: login
       nodeText: ok
+    ↓Call_Transaction11 [steps.TransactionStep-1603520199455]: 
+      sourceTransaction: lib_OAuth.LinkedInApi.getEmail
+      ↓__header_Authorization [variables.StepVariable-1603520199458]: 
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1516297618652
+              - java.lang.String: 
+                - ↑value: ./text()
     ↓Concat [steps.XMLConcatStep-1572685986582]: 
       nodeName: AuthUser
       separator: ':'
@@ -184,6 +195,15 @@ comment: |
               - ↑value: 1516298128109
             - java.lang.String: 
               - ↑value: ./document/object
+    ↓Copy1 [steps.XMLCopyStep-1603520370399]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1603520199455
+            - java.lang.String: 
+              - ↑value: ./document/object/elements[1]/object/handle_/emailAddress
   ↓jElse [steps.ElseStep-1516353106844]: 
     ↓login [steps.XMLElementStep-1516353116377]: 
       nodeName: login
