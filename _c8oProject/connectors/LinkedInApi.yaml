@@ -2,9 +2,7 @@ https: true
 port: 443
 server: api.linkedin.com
 ↓getEmail [transactions.JsonHttpTransaction]: 
-  httpPool: global
   subDir: v2/clientAwareMemberHandles?q=members&projection=(elements*(primary,type,handle~))
 ↓Me [transactions.JsonHttpTransaction]: 
   ↑default: true
-  httpPool: global
   subDir: v2/me
