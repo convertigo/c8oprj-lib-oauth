@@ -5,6 +5,8 @@ port: 443
 server: graph.microsoft.com
 ↓default [transactions.HttpTransaction]: 
   ↑default: true
+  accessibility: Public
   subDir: me/
 ↓Me [transactions.JsonHttpTransaction]: 
+  accessibility: Public
   subDir: me

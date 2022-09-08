@@ -1,8 +1,11 @@
 ↓Default_transaction [transactions.HttpTransaction]: 
   ↑default: true
+  accessibility: Public
 ↓DiscoveryDocument [transactions.JsonHttpTransaction]: 
+  accessibility: Public
   subDir: https://accounts.google.com/.well-known/openid-configuration
 ↓GetToken [transactions.JsonHttpTransaction]: 
+  accessibility: Public
   httpVerb: POST
   ↓code [variables.RequestableHttpVariable-1572732527246]: 
     httpMethod: POST

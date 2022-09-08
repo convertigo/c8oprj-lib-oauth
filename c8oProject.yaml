@@ -1,6 +1,13 @@
-↑convertigo: 7.9.0.m006
+↑convertigo: 8.0.0.m006
 ↓lib_OAuth [core.Project]: 
-  comment: OAuth library to perform authentication
+  comment: |
+    'OAuth/OpenID library to perform authentication.
+    This library work in Conjunction with the Ngx Client Action [OAuth/OpenID](https://doc.convertigo.com/documentation/latest/reference-manual/convertigo-objects/mobile-application/components/action-components/oauth-openid)
+    
+    ## Symbols
+    
+    
+     '
   version: 7.9.0
   ↓GoogleOAuth [connectors.HttpConnector]: 🗏 connectors/GoogleOAuth.yaml
   ↓LinkedInApi [connectors.HttpConnector]: 🗏 connectors/LinkedInApi.yaml
