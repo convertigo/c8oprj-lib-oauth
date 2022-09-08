@@ -115,7 +115,7 @@ If the token is valid, it will be stored in the user's session to be used when c
 
 ### loginGoogleWithCode
 
-Perform the Backnd OAuth flow for Google
+Perform the Backend OAuth flow for Google
 
 If the token is valid, it will be stored in the user's session to be used when calling Google APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
@@ -154,16 +154,16 @@ If the token is valid, it will be stored in the user's session to be used when c
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>client_id</td><td></td>
+<td>client_id</td><td>The Client ID provided by a symbol. (This is never provided by the client)</td>
 </tr>
 <tr>
-<td>code</td><td></td>
+<td>code</td><td>The OAuth CODE provided by the client</td>
 </tr>
 <tr>
-<td>keySecret</td><td></td>
+<td>keySecret</td><td>The OAuth secret key provided by a Symbol (This is never provided by the client)</td>
 </tr>
 <tr>
-<td>redirect_uri</td><td></td>
+<td>redirect_uri</td><td>The LinkedIn OAuth redirect as configured in the Google Application registration</td>
 </tr>
 </table>
 

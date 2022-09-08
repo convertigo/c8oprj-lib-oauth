@@ -1,5 +1,5 @@
 comment: |
-  Perform the Backnd OAuth flow for Google
+  Perform the Backend OAuth flow for Google
   
   If the token is valid, it will be stored in the user's session to be used when calling Google APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
   

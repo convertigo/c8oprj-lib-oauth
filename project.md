@@ -329,12 +329,12 @@ The Access Token
 
 </p></blockquote></details>
 
-<details><summary><b>loginGoogleWithCode</b> : Perform the Backnd OAuth flow for Google</summary><blockquote><p>
+<details><summary><b>loginGoogleWithCode</b> : Perform the Backend OAuth flow for Google</summary><blockquote><p>
 
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginGoogleWithCode
 
-Perform the Backnd OAuth flow for Google
+Perform the Backend OAuth flow for Google
 
 If the token is valid, it will be stored in the user's session to be used when calling Google APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
@@ -412,7 +412,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;client_id
 </td>
 <td>
-
+The Client ID provided by a symbol. (This is never provided by the client)
 </td>
 </tr>
 <tr>
@@ -420,7 +420,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;code
 </td>
 <td>
-
+The OAuth CODE provided by the client
 </td>
 </tr>
 <tr>
@@ -428,7 +428,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;keySecret
 </td>
 <td>
-
+The OAuth secret key provided by a Symbol (This is never provided by the client)
 </td>
 </tr>
 <tr>
@@ -436,7 +436,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;redirect_uri
 </td>
 <td>
-
+The LinkedIn OAuth redirect as configured in the Google Application registration
 </td>
 </tr>
 </table>

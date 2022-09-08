@@ -207,13 +207,17 @@ comment: |
       nodeName: login
       nodeText: ko
 ↓code [variables.RequestableVariable-1516293991316]: 
+  comment: The OAuth CODE provided by the client
 ↓keySecret [variables.RequestableVariable-1516295368386]: 
+  comment: The OAuth secret key provided by a Symbol (This is never provided by the client)
   value: 
     - ↑ciphered: true
     - ↑traceable: false
     - →→: x880b838d880fd89bd596d889626a189b907ef287c0a8f220de8808ac146b4d256d6203cd7fab0a715d0588f75e682940
   visibility: '-1'
 ↓redirect_uri [variables.RequestableVariable-1516296624224]: 
+  comment: The LinkedIn OAuth redirect as configured in the Google Application registration
   value: https://c8ocloud.convertigo.net/convertigo/projects/lib_OAuth/getTokenLinkedIn.html
 ↓client_id [variables.RequestableVariable-1516297001764]: 
+  comment: The Client ID provided by a symbol. (This is never provided by the client)
   value: ${lib_oauth.linkedin.clientid}
