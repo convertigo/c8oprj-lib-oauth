@@ -7,7 +7,6 @@ This library work in Conjunction with the Ngx Client Action [OAuth/OpenID](https
 ## Symbols
 OAuth work in conjunction with applications declared in the providers API portals. Please refer to the documentation fo each provider for details. When you declare an application, the portal will provide you with various IDs you will be able to configure in the following symbols.
 
-|----------|-------------------|
 |Symbol    | Comment           |
 |----------|-------------------|
 |lib_oauth.google.clientid    | The Google client id of your registered app on Google API portal           |
