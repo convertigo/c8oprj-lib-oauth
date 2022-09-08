@@ -6,6 +6,9 @@ This library work in Conjunction with the Ngx Client Action [OAuth/OpenID](https
 
 ## Symbols
 
+lib_oauth.google.clientid
+lib_oauth.microsoft.clientid
+lib_oauth.linkedin.clientid
 
  
 
@@ -288,16 +291,14 @@ This as to be called by client apps to decide whenever or not they have to displ
 Returns to the client the public OAuth credentials
 </p></blockquote></details>
 
-<details><summary><b>loginAzureAdWithAccessToken</b> : Perform the OAuth flow for AzureAD</summary><blockquote><p>
+<details><summary><b>loginAzureAdWithAccessToken</b> : Perform the Backend OAuth flow for AzureAD</summary><blockquote><p>
 
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginAzureAdWithAccessToken
 
-Perform the OAuth flow for AzureAD
+Perform the Backend OAuth flow for AzureAD
 
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-
-Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 <span style="color:DarkGoldenRod">Variables</span>
@@ -316,23 +317,21 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;access_token
 </td>
 <td>
-
+The Access Token
 </td>
 </tr>
 </table>
 
 </p></blockquote></details>
 
-<details><summary><b>loginGoogleWithCode</b> : Perform the OAuth flow for Google</summary><blockquote><p>
+<details><summary><b>loginGoogleWithCode</b> : Perform the Backnd OAuth flow for Google</summary><blockquote><p>
 
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginGoogleWithCode
 
-Perform the OAuth flow for Google
+Perform the Backnd OAuth flow for Google
 
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-
-Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Google APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 <span style="color:DarkGoldenRod">Variables</span>
@@ -351,7 +350,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;client_id
 </td>
 <td>
-
+The Client ID provided by a symbol. (This is never provided by the client)
 </td>
 </tr>
 <tr>
@@ -359,7 +358,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;code
 </td>
 <td>
-
+The OAuth CODE provided by the client
 </td>
 </tr>
 <tr>
@@ -367,7 +366,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;keySecret
 </td>
 <td>
-
+The OAuth secret key provided by a Symbol (This is never provided by the client)
 </td>
 </tr>
 <tr>
@@ -375,7 +374,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;redirect_uri
 </td>
 <td>
-
+The Google OAuth redirect as configured in the Google Application registration
 </td>
 </tr>
 </table>
@@ -389,9 +388,7 @@ comment
 
 Perform the OAuth flow for LinkedIn
 
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-
-Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling LinkedIn APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 <span style="color:DarkGoldenRod">Variables</span>

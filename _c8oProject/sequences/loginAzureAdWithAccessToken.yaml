@@ -1,9 +1,7 @@
 comment: |
-  Perform the OAuth flow for AzureAD
+  Perform the Backend OAuth flow for AzureAD
   
-  If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-  
-  Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+  If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
   
 ↓Input_variables [steps.InputVariablesStep-1493471066094]: 
 ↓bearer [steps.XMLConcatStep-1493474257025]: 
@@ -153,3 +151,4 @@ comment: |
       nodeName: login
       nodeText: ko
 ↓access_token [variables.RequestableVariable-1493470997723]: 
+  comment: The Access Token

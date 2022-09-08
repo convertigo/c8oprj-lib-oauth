@@ -6,6 +6,9 @@
     
     ## Symbols
     
+    lib_oauth.google.clientid
+    lib_oauth.microsoft.clientid
+    lib_oauth.linkedin.clientid
     
      '
   version: 7.9.0

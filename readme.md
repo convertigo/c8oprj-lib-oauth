@@ -8,6 +8,9 @@ This library work in Conjunction with the Ngx Client Action [OAuth/OpenID](https
 
 ## Symbols
 
+lib_oauth.google.clientid
+lib_oauth.microsoft.clientid
+lib_oauth.linkedin.clientid
 
  
 
@@ -89,11 +92,9 @@ Returns to the client the public OAuth credentials
 
 ### loginAzureAdWithAccessToken
 
-Perform the OAuth flow for AzureAD
+Perform the Backend OAuth flow for AzureAD
 
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-
-Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 **variables**
@@ -103,17 +104,15 @@ Also if the token is valid, setAuthenticatedUser step is executed to flag this s
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>access_token</td><td></td>
+<td>access_token</td><td>The Access Token</td>
 </tr>
 </table>
 
 ### loginGoogleWithCode
 
-Perform the OAuth flow for Google
+Perform the Backnd OAuth flow for Google
 
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-
-Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Google APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 **variables**
@@ -123,16 +122,16 @@ Also if the token is valid, setAuthenticatedUser step is executed to flag this s
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>client_id</td><td></td>
+<td>client_id</td><td>The Client ID provided by a symbol. (This is never provided by the client)</td>
 </tr>
 <tr>
-<td>code</td><td></td>
+<td>code</td><td>The OAuth CODE provided by the client</td>
 </tr>
 <tr>
-<td>keySecret</td><td></td>
+<td>keySecret</td><td>The OAuth secret key provided by a Symbol (This is never provided by the client)</td>
 </tr>
 <tr>
-<td>redirect_uri</td><td></td>
+<td>redirect_uri</td><td>The Google OAuth redirect as configured in the Google Application registration</td>
 </tr>
 </table>
 
@@ -140,9 +139,7 @@ Also if the token is valid, setAuthenticatedUser step is executed to flag this s
 
 Perform the OAuth flow for LinkedIn
 
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-
-Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling LinkedIn APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 **variables**

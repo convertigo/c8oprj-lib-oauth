@@ -1,9 +1,7 @@
 comment: |
-  Perform the OAuth flow for Google
+  Perform the Backnd OAuth flow for Google
   
-  If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-  
-  Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+  If the token is valid, it will be stored in the user's session to be used when calling Google APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
   
 ↓Input_variables [steps.InputVariablesStep-1572730965714]: 
 ↓Call_Transaction2 [steps.TransactionStep-1572731759504]: 
@@ -135,13 +133,17 @@ comment: |
             - java.lang.String: 
               - ↑value: ./document/object
 ↓code [variables.RequestableVariable-1572730965771]: 
+  comment: The OAuth CODE provided by the client
 ↓keySecret [variables.RequestableVariable-1572730965774]: 
+  comment: The OAuth secret key provided by a Symbol (This is never provided by the client)
   value: 
     - ↑ciphered: true
     - ↑traceable: false
     - →→: xe3e8d34ac6f50dd03fb1b49b167dde8acf4e108275aa6607ecdc1742b13dc0f244477d0843c75b183120fdd6a8e52211
   visibility: '-1'
 ↓redirect_uri [variables.RequestableVariable-1572730965777]: 
+  comment: The Google OAuth redirect as configured in the Google Application registration
   value: https://www.convertigo.com/authorize
 ↓client_id [variables.RequestableVariable-1572730965780]: 
+  comment: The Client ID provided by a symbol. (This is never provided by the client)
   value: ${lib_oauth.google.clientid}

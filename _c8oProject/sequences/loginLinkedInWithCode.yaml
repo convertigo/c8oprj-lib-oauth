@@ -1,9 +1,7 @@
 comment: |
   Perform the OAuth flow for LinkedIn
   
-  If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-  
-  Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+  If the token is valid, it will be stored in the user's session to be used when calling LinkedIn APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
   
 ↓Input_variables [steps.InputVariablesStep-1516293991182]: 
 ↓Call_Transaction [steps.TransactionStep-1516296543961]: 
