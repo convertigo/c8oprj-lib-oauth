@@ -239,7 +239,7 @@ comment
 
 Checks is a valid access token is held by the current users' session for AzureAD
 
-This as to be called by client apps to decide whenever or not they have to display an OAuth login screen
+This has to be called by client apps to decide whenever or not they have to display an OAuth login screen
 
 
 </p></blockquote></details>
@@ -251,7 +251,7 @@ This as to be called by client apps to decide whenever or not they have to displ
 
 Checks is a valid access token is held by the current users' session for AzureAD
 
-This as to be called by client apps to decide whenever or not they have to display an OAuth login screen
+This has to be called by client apps to decide whenever or not they have to display an OAuth login screen
 
 
 </p></blockquote></details>
@@ -263,7 +263,7 @@ This as to be called by client apps to decide whenever or not they have to displ
 
 Checks is a valid access token is held by the current users' session for Google
 
-This as to be called by client apps to decide whenever or not they have to display an OAuth login screen
+This has to be called by client apps to decide whenever or not they have to display an OAuth login screen
 
 
 </p></blockquote></details>
