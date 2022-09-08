@@ -2,10 +2,10 @@
 # ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/core/images/project_color_16x16.png?raw=true "Project") lib_OAuth
 
 OAuth/OpenID library to perform authentication.
-This library work in Conjunction with the Ngx Client Action [OAuth/OpenID](https://doc.convertigo.com/documentation/latest/reference-manual/convertigo-objects/mobile-application/components/action-components/oauth-openid)
+This library works in Conjunction with the Ngx Client Action [OAuth/OpenID](https://doc.convertigo.com/documentation/latest/reference-manual/convertigo-objects/mobile-application/components/action-components/oauth-openid)
 
 ## Symbols
-OAuth work in conjunction with applications declared in the providers API portals. Please refer to the documentation fo each provider for details. When you declare an application, the portal will provide you with various IDs you will be able to configure in the following symbols.
+OAuth works in conjunction with applications declared in the providers API portals. Please refer to the documentation fo each provider for details. When you declare an application, the portal will provide you with various IDs you will be able to configure in the following symbols.
 
 |Symbol    | Comment           |
 |----------|-------------------|
