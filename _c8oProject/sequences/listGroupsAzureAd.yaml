@@ -1,0 +1,49 @@
+comment: Returns the list of groups for a user for AzureAD
+↓Call_Sequence [steps.SequenceStep-1671197075936]: 
+  sourceSequence: lib_OAuth.checkAccessToken
+↓IfExist [steps.IfExistStep-1671197143648]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1671197075936
+        - java.lang.String: 
+          - ↑value: ./document/token
+  ↓Call_Transaction [steps.TransactionStep-1671186580543]: 
+    output: true
+    sourceTransaction: lib_OAuth.MicrosoftGraphApi.groups
+    ↓__header_Authorization [variables.StepVariable-1671186615896]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1671197075936
+            - java.lang.String: 
+              - ↑value: ./document/token/text()
+  ↓Array [steps.JsonArrayStep-1671443593899]: 
+    key: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: groups
+    ↓Iterator [steps.IteratorStep-1671443607545]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1671186580543
+            - java.lang.String: 
+              - ↑value: ./document/object/value/object
+      ↓Copy [steps.XMLCopyStep-1671443662092]: 
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1671443607545
+              - java.lang.String: 
+                - ↑value: .

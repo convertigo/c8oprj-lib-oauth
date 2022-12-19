@@ -1,58 +1,7 @@
 
 # ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/core/images/project_color_16x16.png?raw=true "Project") lib_OAuth
 
-OAuth/OpenID library to perform authentication.
-This library works in Conjunction with the Ngx Client Action [OAuth/OpenID](https://doc.convertigo.com/documentation/latest/reference-manual/convertigo-objects/mobile-application/components/action-components/oauth-openid)
-
-## Symbols
-OAuth works in conjunction with applications declared in the providers API portals. Please refer to the documentation fo each provider for details. When you declare an application, the portal will provide you with various IDs you will be able to configure in the following symbols.
-
-|Symbol    | Comment           |
-|----------|-------------------|
-|lib_oauth.google.clientid    | The Google client id of your registered app on Google API portal           |
-|lib_oauth.google.keysecret.secret    | The Google secret key of your registered app           |
-|lib_oauth.azuread.clientid    | The Azure client id of your registered app on Microsoft Application Registration Portal (https://apps.dev.microsoft.com)    |
-|lib_oauth.azuread.tenantid    | The optional Azure tenant id you will find in the same portal           |
-|lib_oauth.linkedin.clientid    | The linkedIn client id you will find the LinkedIn API portal (https://www.linkedin.com/secure/developer?newapp           |
-|lib_oauth.linkedin.keysecret.secret    | The linkedIn secret key you will find in the same portal           |
-
-Here is how to set up the project for the different login providers:
-- **Google**
-    1. Log in to https://console.developers.google.com
-    2. Create a **NEW PROJECT**.
-    3. Go to **Credentials > Create credentials > OAuth client ID**
-    4. Select **Web application**
-    5. Choose a name for your *OAuth client ID*
-    6. Add **Authorised JavaScript origins** like:
-        - http://localhost:18080 for testing with your local Studio
-        - https://c8ocloud.convertigo.net
-    7. Add following **Authorised redirect URIs**:
-        - https://c8ocloud.convertigo.net/convertigo/projects/libOAuth/getTokenGoogle.html
-        
-
-- **LinkedIn**
-    1. Log in to https://linkedin.com/developers
-    2. Go to **My Apps > Create app**
-    3. Fill in the form to create your application.
-    4. Go to **Auth > Application credentials**
-        - Copy **Client ID** and **Client Secret** keys to Convertigo Symbols
-    5. Go to **Auth > OAuth 2.0 settings** and set Redirect URLs:
-        - https://c8ocloud.convertigo.net/convertigo/projects/libOAuth/getTokenlinkedIn.html
-
-- **Azure**
-    1. Log in to https://portal.azure.com
-    2. Go to **All Services > Azure Active Directory > App registrations**
-    3. Click **New registration**.
-        - Choose a name.
-        - In **Supported account types**, select Single or Multi tenant.
-        - In **Redirect URI (optional)**, select **Public client/native**
-        - Type in https://c8ocloud.convertigo.net/convertigo/projects/libOAuth/getToken.html
-        - Click **Register**
-    4. Click your project name:
-        - Go to **Authentication > Advanced settings** and check **Access tokens** and **ID tokens**
-        - Copy **Application (client) ID** and **Directory (tenant) ID** keys to Convertigo Symbols
-        
-        
+OAuth library to perform authentication
 
 <details><summary><span style="color:DarkGoldenRod"><i>Connectors</i></span></summary><blockquote><p>
 
@@ -263,6 +212,14 @@ comment
 
 </p></blockquote></details>
 
+<details><summary><b>groups</b></summary><blockquote><p>
+
+
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/transactions/images/jsonhttptransaction_color_16x16.png?raw=true "JsonHttpTransaction") groups
+
+
+</p></blockquote></details>
+
 <details><summary><b>Me</b></summary><blockquote><p>
 
 
@@ -331,6 +288,14 @@ This as to be called by client apps to decide whenever or not they have to displ
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") GetOAuthCredentials
 
 Returns to the client the public OAuth credentials
+</p></blockquote></details>
+
+<details><summary><b>listGroupsAzureAd</b> : Returns the list of groups for a user for AzureAD</summary><blockquote><p>
+
+
+## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") listGroupsAzureAd
+
+Returns the list of groups for a user for AzureAD
 </p></blockquote></details>
 
 <details><summary><b>loginAzureAdWithAccessToken</b> : Perform the Backend OAuth flow for AzureAD</summary><blockquote><p>
