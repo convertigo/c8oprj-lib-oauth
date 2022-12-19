@@ -11,7 +11,6 @@ comment: Returns the list of groups for a user for AzureAD
         - java.lang.String: 
           - ↑value: ./document/token
   ↓Call_Transaction [steps.TransactionStep-1671186580543]: 
-    output: true
     sourceTransaction: lib_OAuth.MicrosoftGraphApi.groups
     ↓__header_Authorization [variables.StepVariable-1671186615896]: 
       sourceDefinition: 
