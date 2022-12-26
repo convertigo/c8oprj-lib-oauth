@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:lib_OAuth_ns="http://www.convertigo.com/convertigo/projects/lib_OAuth" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.convertigo.com/convertigo/projects/lib_OAuth">
+    <xsd:element name="MicrosoftGraphApi__groups" type="lib_OAuth_ns:MicrosoftGraphApi__groupsRequestData">
+        <xsd:annotation/>
+    </xsd:element>
+    <xsd:element name="MicrosoftGraphApi__groupsResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="response" type="lib_OAuth_ns:MicrosoftGraphApi__groupsResponseData"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="MicrosoftGraphApi__groupsResponseType">
+        <xsd:sequence>
+            <xsd:element name="document" type="lib_OAuth_ns:MicrosoftGraphApi__groupsResponseData"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi__groupsRequestData">
+        <xsd:sequence/>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object__odata_contextType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="@odata.context" name="originalKeyName" type="xsd:string"/>
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_idType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_deletedDateTimeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_classificationType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_createdDateTimeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_creationOptionsType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="length" type="xsd:byte"/>
+                <xsd:attribute default="array" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_descriptionType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_displayNameType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_expirationDateTimeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_groupTypes_valueType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_groupTypesType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="value" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_groupTypes_valueType"/>
+        </xsd:sequence>
+        <xsd:attribute name="length" type="xsd:byte"/>
+        <xsd:attribute default="array" name="type" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_isAssignableToRoleType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_mailType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_mailEnabledType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_mailNicknameType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_membershipRuleType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_membershipRuleProcessingStateType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_onPremisesDomainNameType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_onPremisesLastSyncDateTimeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_onPremisesNetBiosNameType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_onPremisesSamAccountNameType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_onPremisesSecurityIdentifierType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_onPremisesSyncEnabledType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_preferredDataLocationType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_preferredLanguageType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_proxyAddresses_valueType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_proxyAddressesType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="value" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_proxyAddresses_valueType"/>
+        </xsd:sequence>
+        <xsd:attribute name="length" type="xsd:byte"/>
+        <xsd:attribute default="array" name="type" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_renewedDateTimeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_resourceBehaviorOptionsType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="length" type="xsd:byte"/>
+                <xsd:attribute default="array" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_resourceProvisioningOptionsType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="length" type="xsd:byte"/>
+                <xsd:attribute default="array" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_securityEnabledType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_securityIdentifierType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_themeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_visibilityType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_object_onPremisesProvisioningErrorsType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="length" type="xsd:byte"/>
+                <xsd:attribute default="array" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_value_objectType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="id" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_idType"/>
+            <xsd:element minOccurs="0" name="deletedDateTime" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_deletedDateTimeType"/>
+            <xsd:element minOccurs="0" name="classification" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_classificationType"/>
+            <xsd:element minOccurs="0" name="createdDateTime" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_createdDateTimeType"/>
+            <xsd:element minOccurs="0" name="creationOptions" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_creationOptionsType"/>
+            <xsd:element minOccurs="0" name="description" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_descriptionType"/>
+            <xsd:element minOccurs="0" name="displayName" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_displayNameType"/>
+            <xsd:element minOccurs="0" name="expirationDateTime" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_expirationDateTimeType"/>
+            <xsd:element minOccurs="0" name="groupTypes" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_groupTypesType"/>
+            <xsd:element minOccurs="0" name="isAssignableToRole" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_isAssignableToRoleType"/>
+            <xsd:element minOccurs="0" name="mail" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_mailType"/>
+            <xsd:element minOccurs="0" name="mailEnabled" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_mailEnabledType"/>
+            <xsd:element minOccurs="0" name="mailNickname" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_mailNicknameType"/>
+            <xsd:element minOccurs="0" name="membershipRule" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_membershipRuleType"/>
+            <xsd:element minOccurs="0" name="membershipRuleProcessingState" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_membershipRuleProcessingStateType"/>
+            <xsd:element minOccurs="0" name="onPremisesDomainName" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_onPremisesDomainNameType"/>
+            <xsd:element minOccurs="0" name="onPremisesLastSyncDateTime" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_onPremisesLastSyncDateTimeType"/>
+            <xsd:element minOccurs="0" name="onPremisesNetBiosName" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_onPremisesNetBiosNameType"/>
+            <xsd:element minOccurs="0" name="onPremisesSamAccountName" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_onPremisesSamAccountNameType"/>
+            <xsd:element minOccurs="0" name="onPremisesSecurityIdentifier" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_onPremisesSecurityIdentifierType"/>
+            <xsd:element minOccurs="0" name="onPremisesSyncEnabled" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_onPremisesSyncEnabledType"/>
+            <xsd:element minOccurs="0" name="preferredDataLocation" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_preferredDataLocationType"/>
+            <xsd:element minOccurs="0" name="preferredLanguage" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_preferredLanguageType"/>
+            <xsd:element minOccurs="0" name="proxyAddresses" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_proxyAddressesType"/>
+            <xsd:element minOccurs="0" name="renewedDateTime" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_renewedDateTimeType"/>
+            <xsd:element minOccurs="0" name="resourceBehaviorOptions" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_resourceBehaviorOptionsType"/>
+            <xsd:element minOccurs="0" name="resourceProvisioningOptions" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_resourceProvisioningOptionsType"/>
+            <xsd:element minOccurs="0" name="securityEnabled" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_securityEnabledType"/>
+            <xsd:element minOccurs="0" name="securityIdentifier" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_securityIdentifierType"/>
+            <xsd:element minOccurs="0" name="theme" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_themeType"/>
+            <xsd:element minOccurs="0" name="visibility" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_visibilityType"/>
+            <xsd:element minOccurs="0" name="onPremisesProvisioningErrors" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_object_onPremisesProvisioningErrorsType"/>
+        </xsd:sequence>
+        <xsd:attribute default="object" name="type" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_object_valueType">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="object" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_value_objectType"/>
+        </xsd:sequence>
+        <xsd:attribute name="length" type="xsd:byte"/>
+        <xsd:attribute default="array" name="type" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi_groups_document_objectType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="_odata_context" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object__odata_contextType"/>
+            <xsd:element minOccurs="0" name="value" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_object_valueType"/>
+        </xsd:sequence>
+        <xsd:attribute default="object" name="type" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="MicrosoftGraphApi__groupsResponseData">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="object" type="lib_OAuth_ns:MicrosoftGraphApi_groups_document_objectType"/>
+            <xsd:element minOccurs="0" name="error" type="lib_OAuth_ns:ConvertigoError"/>
+        </xsd:sequence>
+        <xsd:attribute name="connector" type="xsd:string"/>
+        <xsd:attribute name="context" type="xsd:string"/>
+        <xsd:attribute name="contextId" type="xsd:string"/>
+        <xsd:attribute name="fromStub" type="xsd:boolean"/>
+        <xsd:attribute name="fromcache" type="xsd:boolean"/>
+        <xsd:attribute name="generated" type="xsd:string"/>
+        <xsd:attribute name="project" type="xsd:string"/>
+        <xsd:attribute name="sequence" type="xsd:string"/>
+        <xsd:attribute name="signature" type="xsd:long"/>
+        <xsd:attribute name="transaction" type="xsd:string"/>
+        <xsd:attribute name="version" type="xsd:string"/>
+        <xsd:attribute name="screenclass" type="xsd:string"/>
+        <xsd:attribute name="userReference" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ConvertigoErrorContextVariable">
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="value" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ConvertigoErrorContext">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="variable" type="lib_OAuth_ns:ConvertigoErrorContextVariable"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ConvertigoError">
+        <xsd:sequence minOccurs="0">
+            <xsd:element name="code" type="xsd:integer"/>
+            <xsd:element name="message" type="xsd:string"/>
+            <xsd:element name="details" type="xsd:string"/>
+            <xsd:element name="context" type="lib_OAuth_ns:ConvertigoErrorContext"/>
+            <xsd:element name="exception" type="xsd:string"/>
+            <xsd:element name="stacktrace" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="project" type="xsd:string"/>
+        <xsd:attribute name="connector" type="xsd:string"/>
+        <xsd:attribute name="transaction" type="xsd:string"/>
+        <xsd:attribute name="sequence" type="xsd:string"/>
+        <xsd:attribute name="type">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="c8o"/>
+                    <xsd:enumeration value="project"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>

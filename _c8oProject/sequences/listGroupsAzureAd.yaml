@@ -21,7 +21,7 @@ comment: Returns the list of groups for a user for AzureAD
               - ↑value: 1671197075936
             - java.lang.String: 
               - ↑value: ./document/token/text()
-  ↓Array [steps.JsonArrayStep-1671443593899]: 
+  ↓groups [steps.JsonArrayStep-1671443593899]: 
     key: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
@@ -37,7 +37,7 @@ comment: Returns the list of groups for a user for AzureAD
               - ↑value: 1671186580543
             - java.lang.String: 
               - ↑value: ./document/object/value/object
-      ↓Copy [steps.XMLCopyStep-1671443662092]: 
+      ↓object [steps.XMLCopyStep-1671443662092]: 
         sourceDefinition: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
