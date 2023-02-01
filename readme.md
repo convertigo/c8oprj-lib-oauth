@@ -128,7 +128,7 @@ Also if the token is valid, setAuthenticatedUser step is executed to flag this s
 
 ### loginGitHubWithCode
 
-Perform the OAuth flow for GitHub
+Perform the OAuth flow for GitHub with Code
 
 If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
 

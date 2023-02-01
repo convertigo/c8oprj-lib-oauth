@@ -437,12 +437,12 @@ comment
 
 </p></blockquote></details>
 
-<details><summary><b>loginGitHubWithCode</b> : Perform the OAuth flow for GitHub</summary><blockquote><p>
+<details><summary><b>loginGitHubWithCode</b> : Perform the OAuth flow for GitHub with Code</summary><blockquote><p>
 
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginGitHubWithCode
 
-Perform the OAuth flow for GitHub
+Perform the OAuth flow for GitHub with Code
 
 If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
 
