@@ -1,0 +1,62 @@
+comment: GitHub
+https: true
+port: 443
+server: github.com
+trustAllServerCertificates: false
+↓GetToken [transactions.JsonHttpTransaction]: 
+  ↑default: true
+  accessibility: Public
+  httpParameters: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: Content-Type
+            - java.lang.String: 
+              - ↑value: application/x-www-form-urlencoded
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: Accept
+            - java.lang.String: 
+              - ↑value: application/json
+  httpVerb: POST
+  subDir: login/oauth/access_token
+  ↓redirect_uri [variables.RequestableHttpVariable-1675184799445]: 
+    httpMethod: POST
+    httpName: redirect_uri
+  ↓client_id [variables.RequestableHttpVariable-1675184799448]: 
+    httpMethod: POST
+    httpName: client_id
+  ↓client_secret [variables.RequestableHttpVariable-1675184799451]: 
+    httpMethod: POST
+    httpName: client_secret
+  ↓code [variables.RequestableHttpVariable-1675185683930]: 
+    httpMethod: POST
+    httpName: code
+↓User [transactions.JsonHttpTransaction]: 
+  accessibility: Public
+  httpParameters: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: Content-Type
+            - java.lang.String: 
+              - ↑value: application/x-www-form-urlencoded
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: Accept
+            - java.lang.String: 
+              - ↑value: application/json
+  subDir: login/user
+  ↓__header_Authorization [variables.RequestableHttpVariable-1675190419132]: 

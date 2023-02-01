@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:lib_OAuth_ns="http://www.convertigo.com/convertigo/projects/lib_OAuth" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.convertigo.com/convertigo/projects/lib_OAuth">
+    <xsd:element name="GitHubOAuth__User" type="lib_OAuth_ns:GitHubOAuth__UserRequestData">
+        <xsd:annotation/>
+    </xsd:element>
+    <xsd:element name="GitHubOAuth__UserResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="response" type="lib_OAuth_ns:GitHubOAuth__UserResponseData"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="GitHubOAuth__UserResponseType">
+        <xsd:sequence>
+            <xsd:element name="document" type="lib_OAuth_ns:GitHubOAuth__UserResponseData"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth__UserRequestData">
+        <xsd:sequence>
+            <xsd:element name="__header_Authorization" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:appinfo>new variable</xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_loginType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_idType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_node_idType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_avatar_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_gravatar_idType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_html_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_followers_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_following_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_gists_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_starred_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_subscriptions_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_organizations_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_repos_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_events_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_received_events_urlType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_typeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_site_adminType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_nameType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_companyType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_blogType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_locationType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_emailType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_hireableType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_bioType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_twitter_usernameType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_public_reposType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_public_gistsType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_followersType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_followingType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_created_atType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_object_updated_atType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth_User_document_objectType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="login" type="lib_OAuth_ns:GitHubOAuth_User_document_object_loginType"/>
+            <xsd:element minOccurs="0" name="id" type="lib_OAuth_ns:GitHubOAuth_User_document_object_idType"/>
+            <xsd:element minOccurs="0" name="node_id" type="lib_OAuth_ns:GitHubOAuth_User_document_object_node_idType"/>
+            <xsd:element minOccurs="0" name="avatar_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_avatar_urlType"/>
+            <xsd:element minOccurs="0" name="gravatar_id" type="lib_OAuth_ns:GitHubOAuth_User_document_object_gravatar_idType"/>
+            <xsd:element minOccurs="0" name="url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_urlType"/>
+            <xsd:element minOccurs="0" name="html_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_html_urlType"/>
+            <xsd:element minOccurs="0" name="followers_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_followers_urlType"/>
+            <xsd:element minOccurs="0" name="following_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_following_urlType"/>
+            <xsd:element minOccurs="0" name="gists_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_gists_urlType"/>
+            <xsd:element minOccurs="0" name="starred_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_starred_urlType"/>
+            <xsd:element minOccurs="0" name="subscriptions_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_subscriptions_urlType"/>
+            <xsd:element minOccurs="0" name="organizations_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_organizations_urlType"/>
+            <xsd:element minOccurs="0" name="repos_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_repos_urlType"/>
+            <xsd:element minOccurs="0" name="events_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_events_urlType"/>
+            <xsd:element minOccurs="0" name="received_events_url" type="lib_OAuth_ns:GitHubOAuth_User_document_object_received_events_urlType"/>
+            <xsd:element minOccurs="0" name="type" type="lib_OAuth_ns:GitHubOAuth_User_document_object_typeType"/>
+            <xsd:element minOccurs="0" name="site_admin" type="lib_OAuth_ns:GitHubOAuth_User_document_object_site_adminType"/>
+            <xsd:element minOccurs="0" name="name" type="lib_OAuth_ns:GitHubOAuth_User_document_object_nameType"/>
+            <xsd:element minOccurs="0" name="company" type="lib_OAuth_ns:GitHubOAuth_User_document_object_companyType"/>
+            <xsd:element minOccurs="0" name="blog" type="lib_OAuth_ns:GitHubOAuth_User_document_object_blogType"/>
+            <xsd:element minOccurs="0" name="location" type="lib_OAuth_ns:GitHubOAuth_User_document_object_locationType"/>
+            <xsd:element minOccurs="0" name="email" type="lib_OAuth_ns:GitHubOAuth_User_document_object_emailType"/>
+            <xsd:element minOccurs="0" name="hireable" type="lib_OAuth_ns:GitHubOAuth_User_document_object_hireableType"/>
+            <xsd:element minOccurs="0" name="bio" type="lib_OAuth_ns:GitHubOAuth_User_document_object_bioType"/>
+            <xsd:element minOccurs="0" name="twitter_username" type="lib_OAuth_ns:GitHubOAuth_User_document_object_twitter_usernameType"/>
+            <xsd:element minOccurs="0" name="public_repos" type="lib_OAuth_ns:GitHubOAuth_User_document_object_public_reposType"/>
+            <xsd:element minOccurs="0" name="public_gists" type="lib_OAuth_ns:GitHubOAuth_User_document_object_public_gistsType"/>
+            <xsd:element minOccurs="0" name="followers" type="lib_OAuth_ns:GitHubOAuth_User_document_object_followersType"/>
+            <xsd:element minOccurs="0" name="following" type="lib_OAuth_ns:GitHubOAuth_User_document_object_followingType"/>
+            <xsd:element minOccurs="0" name="created_at" type="lib_OAuth_ns:GitHubOAuth_User_document_object_created_atType"/>
+            <xsd:element minOccurs="0" name="updated_at" type="lib_OAuth_ns:GitHubOAuth_User_document_object_updated_atType"/>
+        </xsd:sequence>
+        <xsd:attribute default="object" name="type" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="GitHubOAuth__UserResponseData">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="object" type="lib_OAuth_ns:GitHubOAuth_User_document_objectType"/>
+            <xsd:element minOccurs="0" name="error" type="lib_OAuth_ns:ConvertigoError"/>
+        </xsd:sequence>
+        <xsd:attribute name="connector" type="xsd:string"/>
+        <xsd:attribute name="context" type="xsd:string"/>
+        <xsd:attribute name="contextId" type="xsd:string"/>
+        <xsd:attribute name="fromStub" type="xsd:boolean"/>
+        <xsd:attribute name="fromcache" type="xsd:boolean"/>
+        <xsd:attribute name="generated" type="xsd:string"/>
+        <xsd:attribute name="project" type="xsd:string"/>
+        <xsd:attribute name="sequence" type="xsd:string"/>
+        <xsd:attribute name="signature" type="xsd:long"/>
+        <xsd:attribute name="transaction" type="xsd:string"/>
+        <xsd:attribute name="version" type="xsd:string"/>
+        <xsd:attribute name="screenclass" type="xsd:string"/>
+        <xsd:attribute name="userReference" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ConvertigoErrorContextVariable">
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="value" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ConvertigoErrorContext">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="variable" type="lib_OAuth_ns:ConvertigoErrorContextVariable"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ConvertigoError">
+        <xsd:sequence minOccurs="0">
+            <xsd:element name="code" type="xsd:integer"/>
+            <xsd:element name="message" type="xsd:string"/>
+            <xsd:element name="details" type="xsd:string"/>
+            <xsd:element name="context" type="lib_OAuth_ns:ConvertigoErrorContext"/>
+            <xsd:element name="exception" type="xsd:string"/>
+            <xsd:element name="stacktrace" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="project" type="xsd:string"/>
+        <xsd:attribute name="connector" type="xsd:string"/>
+        <xsd:attribute name="transaction" type="xsd:string"/>
+        <xsd:attribute name="sequence" type="xsd:string"/>
+        <xsd:attribute name="type">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="c8o"/>
+                    <xsd:enumeration value="project"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>

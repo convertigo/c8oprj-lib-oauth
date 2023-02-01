@@ -6,6 +6,102 @@ OAuth library to perform authentication
 <details><summary><span style="color:DarkGoldenRod"><i>Connectors</i></span></summary><blockquote><p>
 
 
+<details><summary><b>GitHubOAuth</b> : GitHub</summary><blockquote><p>
+
+
+## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/connectors/images/httpconnector_color_16x16.png?raw=true "HttpConnector") GitHubOAuth
+
+GitHub
+
+<details><summary><span style="color:DarkGoldenRod"><i>Transactions</i></span></summary><blockquote><p>
+
+
+<details><summary><b>GetToken</b></summary><blockquote><p>
+
+
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/transactions/images/jsonhttptransaction_color_16x16.png?raw=true "JsonHttpTransaction") GetToken
+
+
+
+<span style="color:DarkGoldenRod">Variables</span>
+
+<table>
+<tr>
+<th>
+name
+</th>
+<th>
+comment
+</th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableHttpVariable" >&nbsp;client_id
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableHttpVariable" >&nbsp;client_secret
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableHttpVariable" >&nbsp;code
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableHttpVariable" >&nbsp;redirect_uri
+</td>
+<td>
+
+</td>
+</tr>
+</table>
+
+</p></blockquote></details>
+
+<details><summary><b>User</b></summary><blockquote><p>
+
+
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/transactions/images/jsonhttptransaction_color_16x16.png?raw=true "JsonHttpTransaction") User
+
+
+
+<span style="color:DarkGoldenRod">Variables</span>
+
+<table>
+<tr>
+<th>
+name
+</th>
+<th>
+comment
+</th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableHttpVariable" >&nbsp;__header_Authorization
+</td>
+<td>
+
+</td>
+</tr>
+</table>
+
+</p></blockquote></details>
+</p></blockquote></details>
+</p></blockquote></details>
+
 <details><summary><b>GoogleOAuth</b></summary><blockquote><p>
 
 
@@ -212,14 +308,6 @@ comment
 
 </p></blockquote></details>
 
-<details><summary><b>groups</b></summary><blockquote><p>
-
-
-### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/transactions/images/jsonhttptransaction_color_16x16.png?raw=true "JsonHttpTransaction") groups
-
-
-</p></blockquote></details>
-
 <details><summary><b>Me</b></summary><blockquote><p>
 
 
@@ -241,7 +329,7 @@ comment
 
 Checks is a valid access token is held by the current users' session for AzureAD
 
-This has to be called by client apps to decide whenever or not they have to display an OAuth login screen
+This as to be called by client apps to decide whenever or not they have to display an OAuth login screen
 
 
 </p></blockquote></details>
@@ -253,7 +341,7 @@ This has to be called by client apps to decide whenever or not they have to disp
 
 Checks is a valid access token is held by the current users' session for AzureAD
 
-This has to be called by client apps to decide whenever or not they have to display an OAuth login screen
+This as to be called by client apps to decide whenever or not they have to display an OAuth login screen
 
 
 </p></blockquote></details>
@@ -265,7 +353,7 @@ This has to be called by client apps to decide whenever or not they have to disp
 
 Checks is a valid access token is held by the current users' session for Google
 
-This has to be called by client apps to decide whenever or not they have to display an OAuth login screen
+This as to be called by client apps to decide whenever or not they have to display an OAuth login screen
 
 
 </p></blockquote></details>
@@ -290,22 +378,16 @@ This as to be called by client apps to decide whenever or not they have to displ
 Returns to the client the public OAuth credentials
 </p></blockquote></details>
 
-<details><summary><b>listGroupsAzureAd</b> : Returns the list of groups for a user for AzureAD</summary><blockquote><p>
-
-
-## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") listGroupsAzureAd
-
-Returns the list of groups for a user for AzureAD
-</p></blockquote></details>
-
-<details><summary><b>loginAzureAdWithAccessToken</b> : Perform the Backend OAuth flow for AzureAD</summary><blockquote><p>
+<details><summary><b>loginAzureAdWithAccessToken</b> : Perform the OAuth flow for AzureAD</summary><blockquote><p>
 
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginAzureAdWithAccessToken
 
-Perform the Backend OAuth flow for AzureAD
+Perform the OAuth flow for AzureAD
 
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 <span style="color:DarkGoldenRod">Variables</span>
@@ -324,21 +406,23 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;access_token
 </td>
 <td>
-The Access Token
+
 </td>
 </tr>
 </table>
 
 </p></blockquote></details>
 
-<details><summary><b>loginGoogleWithCode</b> : Perform the Backend OAuth flow for Google</summary><blockquote><p>
+<details><summary><b>loginGitHubWithCode</b> : Perform the OAuth flow for GitHub</summary><blockquote><p>
 
 
-## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginGoogleWithCode
+## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginGitHubWithCode
 
-Perform the Backend OAuth flow for Google
+Perform the OAuth flow for GitHub
 
-If the token is valid, it will be stored in the user's session to be used when calling Google APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 <span style="color:DarkGoldenRod">Variables</span>
@@ -357,7 +441,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;client_id
 </td>
 <td>
-The Client ID provided by a symbol. (This is never provided by the client)
+
 </td>
 </tr>
 <tr>
@@ -365,7 +449,7 @@ The Client ID provided by a symbol. (This is never provided by the client)
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;code
 </td>
 <td>
-The OAuth CODE provided by the client
+
 </td>
 </tr>
 <tr>
@@ -373,7 +457,7 @@ The OAuth CODE provided by the client
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;keySecret
 </td>
 <td>
-The OAuth secret key provided by a Symbol (This is never provided by the client)
+
 </td>
 </tr>
 <tr>
@@ -381,7 +465,66 @@ The OAuth secret key provided by a Symbol (This is never provided by the client)
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;redirect_uri
 </td>
 <td>
-The Google OAuth redirect as configured in the Google Application registration
+
+</td>
+</tr>
+</table>
+
+</p></blockquote></details>
+
+<details><summary><b>loginGoogleWithCode</b> : Perform the OAuth flow for Google</summary><blockquote><p>
+
+
+## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginGoogleWithCode
+
+Perform the OAuth flow for Google
+
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+
+
+<span style="color:DarkGoldenRod">Variables</span>
+
+<table>
+<tr>
+<th>
+name
+</th>
+<th>
+comment
+</th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;client_id
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;code
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;keySecret
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;redirect_uri
+</td>
+<td>
+
 </td>
 </tr>
 </table>
@@ -395,7 +538,9 @@ The Google OAuth redirect as configured in the Google Application registration
 
 Perform the OAuth flow for LinkedIn
 
-If the token is valid, it will be stored in the user's session to be used when calling LinkedIn APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 <span style="color:DarkGoldenRod">Variables</span>
@@ -414,7 +559,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;client_id
 </td>
 <td>
-The Client ID provided by a symbol. (This is never provided by the client)
+
 </td>
 </tr>
 <tr>
@@ -422,7 +567,7 @@ The Client ID provided by a symbol. (This is never provided by the client)
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;code
 </td>
 <td>
-The OAuth CODE provided by the client
+
 </td>
 </tr>
 <tr>
@@ -430,7 +575,7 @@ The OAuth CODE provided by the client
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;keySecret
 </td>
 <td>
-The OAuth secret key provided by a Symbol (This is never provided by the client)
+
 </td>
 </tr>
 <tr>
@@ -438,7 +583,7 @@ The OAuth secret key provided by a Symbol (This is never provided by the client)
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;redirect_uri
 </td>
 <td>
-The LinkedIn OAuth redirect as configured in the Google Application registration
+
 </td>
 </tr>
 </table>

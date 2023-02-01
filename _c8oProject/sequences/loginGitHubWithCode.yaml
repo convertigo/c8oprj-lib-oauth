@@ -1,0 +1,181 @@
+comment: |
+  Perform the OAuth flow for GitHub
+  
+  If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+  
+  Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+  
+↓Input_variables [steps.InputVariablesStep-1675184998887]: 
+↓Call_Transaction [steps.TransactionStep-1675184998890]: 
+  sourceTransaction: lib_OAuth.GitHubOAuth.GetToken
+  ↓redirect_uri [variables.StepVariable-1675184998899]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1675184998887
+          - java.lang.String: 
+            - ↑value: ./redirect_uri/text()
+  ↓client_id [variables.StepVariable-1675184998902]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1675184998887
+          - java.lang.String: 
+            - ↑value: ./client_id/text()
+  ↓client_secret [variables.StepVariable-1675184998905]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1675184998887
+          - java.lang.String: 
+            - ↑value: ./keySecret/text()
+  ↓code [variables.StepVariable-1675185718596]: 
+↓bearer [steps.XMLConcatStep-1675184998908]: 
+  nodeName: bearer
+  output: false
+  sourcesDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: Bearer
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1675184998890
+                - java.lang.String: 
+                  - ↑value: ./document/object/access_token/text()
+            - java.lang.String: 
+              - ↑value: ''
+↓SaveTokenInUserSession [steps.SessionSetStep-1675184998911]: 
+  expression: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: SOURCE
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1675184998908
+          - java.lang.String: 
+            - ↑value: ./text()
+  key: oAuthAccessToken
+↓element [steps.XMLElementStep-1675191045284]: 
+  nodeName: UserURL
+  nodeText: https://api.github.com/user
+  output: false
+↓Call_Transaction1 [steps.TransactionStep-1675190447942]: 
+  connectionStringDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1675191045284
+        - java.lang.String: 
+          - ↑value: ./text()
+  output: true
+  sourceTransaction: lib_OAuth.GitHubOAuth.User
+  ↓__header_Authorization [variables.StepVariable-1675190447944]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1675184998908
+          - java.lang.String: 
+            - ↑value: ./text()
+↓AuthUser [steps.XMLConcatStep-1675243531548]: 
+  nodeName: AuthUser
+  separator: ':'
+  sourcesDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: github
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1675190447942
+                - java.lang.String: 
+                  - ↑value: ./document/object/id/text()
+            - java.lang.String: 
+              - ↑value: ''
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1675190447942
+                - java.lang.String: 
+                  - ↑value: ./document/object/login/text()
+            - java.lang.String: 
+              - ↑value: ''
+↓Set_authenticated_user [steps.SetAuthenticatedUserStep-1675243454776]: 
+  userid: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: SOURCE
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1675243531548
+          - java.lang.String: 
+            - ↑value: ./text()
+↓Copy [steps.XMLCopyStep-1675242518843]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1675190447942
+        - java.lang.String: 
+          - ↑value: ./document/object/*
+↓code [variables.RequestableVariable-1675184998953]: 
+↓keySecret [variables.RequestableVariable-1675184998956]: 
+  value: 
+    - ↑ciphered: true
+    - ↑traceable: false
+    - →→: x237c9b41b1144cbc5425121a12226e5a281617bea545e7a6e60f3831e3424e800ee4b76f6a46dfb8e79badea94f570e9
+  visibility: '-1'
+↓redirect_uri [variables.RequestableVariable-1675184998959]: 
+  value: https://c8ocloud.convertigo.net/convertigo/projects/lib_OAuth/getTokenLinkedIn.html
+↓client_id [variables.RequestableVariable-1675184998962]: 
+  value: ${lib_oauth.github.clientid}

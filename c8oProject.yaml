@@ -1,7 +1,8 @@
 ↑convertigo: 8.0.0.m006
 ↓lib_OAuth [core.Project]: 
   comment: OAuth library to perform authentication
-  version: 1.0.4
+  version: 1.1.0
+  ↓GitHubOAuth [connectors.HttpConnector]: 🗏 connectors/GitHubOAuth.yaml
   ↓GoogleOAuth [connectors.HttpConnector]: 🗏 connectors/GoogleOAuth.yaml
   ↓LinkedInApi [connectors.HttpConnector]: 🗏 connectors/LinkedInApi.yaml
   ↓LinkedInOAuth [connectors.HttpConnector]: 🗏 connectors/LinkedInOAuth.yaml
@@ -11,8 +12,8 @@
   ↓checkAccessTokenGoogle [sequences.GenericSequence]: 🗏 sequences/checkAccessTokenGoogle.yaml
   ↓checkAccessTokenLinkedIn [sequences.GenericSequence]: 🗏 sequences/checkAccessTokenLinkedIn.yaml
   ↓GetOAuthCredentials [sequences.GenericSequence]: 🗏 sequences/GetOAuthCredentials.yaml
-  ↓listGroupsAzureAd [sequences.GenericSequence]: 🗏 sequences/listGroupsAzureAd.yaml
   ↓loginAzureAdWithAccessToken [sequences.GenericSequence]: 🗏 sequences/loginAzureAdWithAccessToken.yaml
+  ↓loginGitHubWithCode [sequences.GenericSequence]: 🗏 sequences/loginGitHubWithCode.yaml
   ↓loginGoogleWithCode [sequences.GenericSequence]: 🗏 sequences/loginGoogleWithCode.yaml
   ↓loginLinkedInWithCode [sequences.GenericSequence]: 🗏 sequences/loginLinkedInWithCode.yaml
   ↓SignOut [sequences.GenericSequence]: 🗏 sequences/SignOut.yaml

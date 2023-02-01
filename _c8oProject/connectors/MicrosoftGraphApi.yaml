@@ -7,9 +7,6 @@ server: graph.microsoft.com
   ↑default: true
   accessibility: Public
   subDir: me/
-↓groups [transactions.JsonHttpTransaction]: 
-  accessibility: Public
-  subDir: groups
 ↓Me [transactions.JsonHttpTransaction]: 
   accessibility: Public
   subDir: me

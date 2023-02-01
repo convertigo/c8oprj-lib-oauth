@@ -15,8 +15,8 @@ For more technical informations : [documentation](./project.md)
     - [checkAccessTokenGoogle](#checkaccesstokengoogle)
     - [checkAccessTokenLinkedIn](#checkaccesstokenlinkedin)
     - [GetOAuthCredentials](#getoauthcredentials)
-    - [listGroupsAzureAd](#listgroupsazuread)
     - [loginAzureAdWithAccessToken](#loginazureadwithaccesstoken)
+    - [loginGitHubWithCode](#logingithubwithcode)
     - [loginGoogleWithCode](#logingooglewithcode)
     - [loginLinkedInWithCode](#loginlinkedinwithcode)
     - [SignOut](#signout)
@@ -50,7 +50,7 @@ For more technical informations : [documentation](./project.md)
 
 Checks is a valid access token is held by the current users' session for AzureAD
 
-This has to be called by client apps to decide whenever or not they have to display an OAuth login screen
+This as to be called by client apps to decide whenever or not they have to display an OAuth login screen
 
 
 
@@ -58,7 +58,7 @@ This has to be called by client apps to decide whenever or not they have to disp
 
 Checks is a valid access token is held by the current users' session for AzureAD
 
-This has to be called by client apps to decide whenever or not they have to display an OAuth login screen
+This as to be called by client apps to decide whenever or not they have to display an OAuth login screen
 
 
 
@@ -66,7 +66,7 @@ This has to be called by client apps to decide whenever or not they have to disp
 
 Checks is a valid access token is held by the current users' session for Google
 
-This has to be called by client apps to decide whenever or not they have to display an OAuth login screen
+This as to be called by client apps to decide whenever or not they have to display an OAuth login screen
 
 
 
@@ -82,15 +82,13 @@ This as to be called by client apps to decide whenever or not they have to displ
 
 Returns to the client the public OAuth credentials
 
-### listGroupsAzureAd
-
-Returns the list of groups for a user for AzureAD
-
 ### loginAzureAdWithAccessToken
 
-Perform the Backend OAuth flow for AzureAD
+Perform the OAuth flow for AzureAD
 
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 **variables**
@@ -100,15 +98,46 @@ If the token is valid, it will be stored in the user's session to be used when c
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>access_token</td><td>The Access Token</td>
+<td>access_token</td><td></td>
+</tr>
+</table>
+
+### loginGitHubWithCode
+
+Perform the OAuth flow for GitHub
+
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>client_id</td><td></td>
+</tr>
+<tr>
+<td>code</td><td></td>
+</tr>
+<tr>
+<td>keySecret</td><td></td>
+</tr>
+<tr>
+<td>redirect_uri</td><td></td>
 </tr>
 </table>
 
 ### loginGoogleWithCode
 
-Perform the Backend OAuth flow for Google
+Perform the OAuth flow for Google
 
-If the token is valid, it will be stored in the user's session to be used when calling Google APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 **variables**
@@ -118,16 +147,16 @@ If the token is valid, it will be stored in the user's session to be used when c
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>client_id</td><td>The Client ID provided by a symbol. (This is never provided by the client)</td>
+<td>client_id</td><td></td>
 </tr>
 <tr>
-<td>code</td><td>The OAuth CODE provided by the client</td>
+<td>code</td><td></td>
 </tr>
 <tr>
-<td>keySecret</td><td>The OAuth secret key provided by a Symbol (This is never provided by the client)</td>
+<td>keySecret</td><td></td>
 </tr>
 <tr>
-<td>redirect_uri</td><td>The Google OAuth redirect as configured in the Google Application registration</td>
+<td>redirect_uri</td><td></td>
 </tr>
 </table>
 
@@ -135,7 +164,9 @@ If the token is valid, it will be stored in the user's session to be used when c
 
 Perform the OAuth flow for LinkedIn
 
-If the token is valid, it will be stored in the user's session to be used when calling LinkedIn APIs. Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
 
 
 **variables**
@@ -145,16 +176,16 @@ If the token is valid, it will be stored in the user's session to be used when c
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>client_id</td><td>The Client ID provided by a symbol. (This is never provided by the client)</td>
+<td>client_id</td><td></td>
 </tr>
 <tr>
-<td>code</td><td>The OAuth CODE provided by the client</td>
+<td>code</td><td></td>
 </tr>
 <tr>
-<td>keySecret</td><td>The OAuth secret key provided by a Symbol (This is never provided by the client)</td>
+<td>keySecret</td><td></td>
 </tr>
 <tr>
-<td>redirect_uri</td><td>The LinkedIn OAuth redirect as configured in the Google Application registration</td>
+<td>redirect_uri</td><td></td>
 </tr>
 </table>
 
