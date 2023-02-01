@@ -92,7 +92,6 @@ comment: |
           - ↑value: 1675191045284
         - java.lang.String: 
           - ↑value: ./text()
-  output: true
   sourceTransaction: lib_OAuth.GitHubOAuth.User
   ↓__header_Authorization [variables.StepVariable-1675190447944]: 
     sourceDefinition: 
@@ -103,63 +102,7 @@ comment: |
             - ↑value: 1675184998908
           - java.lang.String: 
             - ↑value: ./text()
-↓AuthUser [steps.XMLConcatStep-1675243531548]: 
-  nodeName: AuthUser
-  separator: ':'
-  sourcesDefinition: 
-    - xmlizable: 
-      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-      - com.twinsoft.convertigo.beans.common.XMLVector: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - java.lang.String: 
-              - ↑value: description
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-              - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - java.lang.String: 
-              - ↑value: github
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - java.lang.String: 
-              - ↑value: description
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-              - com.twinsoft.convertigo.beans.common.XMLVector: 
-                - java.lang.String: 
-                  - ↑value: 1675190447942
-                - java.lang.String: 
-                  - ↑value: ./document/object/id/text()
-            - java.lang.String: 
-              - ↑value: ''
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - java.lang.String: 
-              - ↑value: description
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-              - com.twinsoft.convertigo.beans.common.XMLVector: 
-                - java.lang.String: 
-                  - ↑value: 1675190447942
-                - java.lang.String: 
-                  - ↑value: ./document/object/login/text()
-            - java.lang.String: 
-              - ↑value: ''
-↓Set_authenticated_user [steps.SetAuthenticatedUserStep-1675243454776]: 
-  userid: 
-    - xmlizable: 
-      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-      - SmartType: 
-        - ↑mode: SOURCE
-        - com.twinsoft.convertigo.beans.common.XMLVector: 
-          - java.lang.String: 
-            - ↑value: 1675243531548
-          - java.lang.String: 
-            - ↑value: ./text()
-↓Copy [steps.XMLCopyStep-1675242518843]: 
+↓IfExistThenElse [steps.IfExistThenElseStep-1675261687048]: 
   sourceDefinition: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
@@ -167,7 +110,80 @@ comment: |
         - java.lang.String: 
           - ↑value: 1675190447942
         - java.lang.String: 
-          - ↑value: ./document/object/*
+          - ↑value: ./document/object/login
+  ↓jThen [steps.ThenStep-1675261688067]: 
+    ↓AuthUser [steps.XMLConcatStep-1675243531548]: 
+      nodeName: authUser
+      separator: ':'
+      sourcesDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: description
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: github
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: description
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                    - java.lang.String: 
+                      - ↑value: 1675190447942
+                    - java.lang.String: 
+                      - ↑value: ./document/object/id/text()
+                - java.lang.String: 
+                  - ↑value: ''
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: description
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                    - java.lang.String: 
+                      - ↑value: 1675190447942
+                    - java.lang.String: 
+                      - ↑value: ./document/object/login/text()
+                - java.lang.String: 
+                  - ↑value: ''
+    ↓Set_authenticated_user [steps.SetAuthenticatedUserStep-1675243454776]: 
+      userid: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: SOURCE
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1675243531548
+              - java.lang.String: 
+                - ↑value: ./text()
+    ↓Copy [steps.XMLCopyStep-1675242518843]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1675190447942
+            - java.lang.String: 
+              - ↑value: ./document/object
+    ↓login [steps.XMLElementStep-1675261727504]: 
+      nodeName: login
+      nodeText: ok
+  ↓jElse [steps.ElseStep-1675261688069]: 
+    ↓login [steps.XMLElementStep-1675261720110]: 
+      nodeName: login
+      nodeText: ko
 ↓code [variables.RequestableVariable-1675184998953]: 
 ↓keySecret [variables.RequestableVariable-1675184998956]: 
   value: 
