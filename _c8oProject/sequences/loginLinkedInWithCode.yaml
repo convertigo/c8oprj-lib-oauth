@@ -117,7 +117,7 @@ comment: |
               - java.lang.String: 
                 - ↑value: ./text()
     ↓Concat [steps.XMLConcatStep-1572685986582]: 
-      nodeName: AuthUser
+      nodeName: authUser
       separator: ':'
       sourcesDefinition: 
         - xmlizable: 
