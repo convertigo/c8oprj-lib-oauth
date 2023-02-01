@@ -1,7 +1,31 @@
 
 # ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/core/images/project_color_16x16.png?raw=true "Project") lib_OAuth
 
-OAuth library to perform authentication
+# OAuth library to perform authentication
+This is the OAuth Library for Convertigo applications. This library is used in conjunction with the [OAuth](https://doc.convertigo.com/documentation/latest/reference-manual/convertigo-objects/mobile-application/components/action-components/oauth-openid) Action to perform SSO Login to Convertigo Apps.
+
+## Symbols
+
+| Symbol                     | Usaqe                                           |
+|----------------------------|-------------------------------------------------|
+|lib_oauth.azuread.clientid	| The Azure Active Directory Client ID             |
+|lib_oauth.azuread.tenantid	| The Azure Active Directory Tenant ID             |
+|lib_oauth.github.clientid	| The GitHub Client ID                             |
+|lib_oauth.github.keysecret.secret	| The Azure Active Directory Client Secret |
+|lib_oauth.google.clientid	| The Google Client ID                             |
+|lib_oauth.google.keysecret.secret	| The Azure Active Directory Client Secret |
+|lib_oauth.linkedin.clientid	| The LinkedIn Client ID                           |
+|lib_oauth.linkedin.keysecret.secret	| The LinkedIn Client Secret               |
+
+## Best Practices
+
+Client secrets must never be embedded in the client applications. The best way to use them in the *OAuth* Action is to call the *GetOAuthCredentials* sequence to retrieve on the client side the necessary credentials.
+
+## Configure the OAuth / OpenID providers
+
+Follow the https://doc.convertigo.com/documentation/latest/reference-manual/convertigo-objects/mobile-application/components/action-components/oauth-openid instructions to learn on how to configure your OAuth IDP.
+
+
 
 <details><summary><span style="color:DarkGoldenRod"><i>Connectors</i></span></summary><blockquote><p>
 
