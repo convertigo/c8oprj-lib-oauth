@@ -37,6 +37,7 @@
   ↓checkAccessTokenGoogle [sequences.GenericSequence]: 🗏 sequences/checkAccessTokenGoogle.yaml
   ↓checkAccessTokenLinkedIn [sequences.GenericSequence]: 🗏 sequences/checkAccessTokenLinkedIn.yaml
   ↓GetOAuthCredentials [sequences.GenericSequence]: 🗏 sequences/GetOAuthCredentials.yaml
+  ↓listGroupsAzureAd [sequences.GenericSequence]: 🗏 sequences/listGroupsAzureAd.yaml
   ↓loginAzureAdWithAccessToken [sequences.GenericSequence]: 🗏 sequences/loginAzureAdWithAccessToken.yaml
   ↓loginGitHubWithCode [sequences.GenericSequence]: 🗏 sequences/loginGitHubWithCode.yaml
   ↓loginGoogleWithCode [sequences.GenericSequence]: 🗏 sequences/loginGoogleWithCode.yaml

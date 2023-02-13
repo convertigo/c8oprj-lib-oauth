@@ -332,6 +332,14 @@ comment
 
 </p></blockquote></details>
 
+<details><summary><b>groups</b></summary><blockquote><p>
+
+
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/transactions/images/jsonhttptransaction_color_16x16.png?raw=true "JsonHttpTransaction") groups
+
+
+</p></blockquote></details>
+
 <details><summary><b>Me</b></summary><blockquote><p>
 
 
@@ -400,6 +408,14 @@ This as to be called by client apps to decide whenever or not they have to displ
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") GetOAuthCredentials
 
 Returns to the client the public OAuth credentials
+</p></blockquote></details>
+
+<details><summary><b>listGroupsAzureAd</b> : Returns the list of groups for a user for AzureAD</summary><blockquote><p>
+
+
+## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") listGroupsAzureAd
+
+Returns the list of groups for a user for AzureAD
 </p></blockquote></details>
 
 <details><summary><b>loginAzureAdWithAccessToken</b> : Perform the OAuth flow for AzureAD</summary><blockquote><p>

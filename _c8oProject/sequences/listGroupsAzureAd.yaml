@@ -1,0 +1,48 @@
+comment: Returns the list of groups for a user for AzureAD
+↓Call_Sequence [steps.SequenceStep-1676282915157]: 
+  sourceSequence: lib_OAuth.checkAccessToken
+↓IfExist [steps.IfExistStep-1676282915160]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1676282915157
+        - java.lang.String: 
+          - ↑value: ./document/token
+  ↓Call_Transaction [steps.TransactionStep-1676282915163]: 
+    sourceTransaction: lib_OAuth.MicrosoftGraphApi.groups
+    ↓__header_Authorization [variables.StepVariable-1676282915166]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1676282915157
+            - java.lang.String: 
+              - ↑value: ./document/token/text()
+  ↓groups [steps.JsonArrayStep-1676282915169]: 
+    key: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: groups
+    ↓Iterator [steps.IteratorStep-1676282915172]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1676282915163
+            - java.lang.String: 
+              - ↑value: ./document/object/value/object
+      ↓object [steps.XMLCopyStep-1676282915175]: 
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1676282915172
+              - java.lang.String: 
+                - ↑value: .
