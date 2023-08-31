@@ -238,6 +238,9 @@ Also if the token is valid, setAuthenticatedUser step is executed to flag this s
 <tr>
 <td>access_token</td><td>The JWT acess Token</td>
 </tr>
+<tr>
+<td>introspectURL</td><td>The URL to call to instrospect and validate the TWT token</td>
+</tr>
 </table>
 
 ### SignOut

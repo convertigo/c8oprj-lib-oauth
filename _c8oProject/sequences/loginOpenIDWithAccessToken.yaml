@@ -7,6 +7,82 @@ comment: |
   
   
 ↓Input_variables [steps.InputVariablesStep-1693388276584]: 
+↓token [steps.XMLConcatStep-1693496055567]: 
+  nodeName: token
+  output: false
+  separator: ':'
+  sourcesDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: token
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1693388276584
+                - java.lang.String: 
+                  - ↑value: ./access_token/text()
+            - java.lang.String: 
+              - ↑value: ''
+↓Call_Transaction [steps.TransactionStep-1693495799958]: 
+  connectionStringDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1693388276584
+        - java.lang.String: 
+          - ↑value: ./introspectURL/text()
+  sourceTransaction: lib_OAuth.OpenIID.Introspect
+  ↓__body [variables.StepVariable-1693495799960]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1693496055567
+          - java.lang.String: 
+            - ↑value: ./text()
+↓IfExistThenElse [steps.IfExistStep-1693501846261]: 
+  condition: IfExistThenElse
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1693495799958
+        - java.lang.String: 
+          - ↑value: ./document/object/error
+  ↓login [steps.XMLElementStep-1693501927686]: 
+    nodeName: login
+    nodeText: ko
+  ↓login1 [steps.XMLElementStep-1693501943538]: 
+    nodeName: error
+    nodeText: ko
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1693495799958
+          - java.lang.String: 
+            - ↑value: ./document/object/error_description
+  ↓Return [steps.ReturnStep-1693501921129]: 
 ↓SaveTokenInUserSession [steps.SessionSetStep-1693388276590]: 
   expression: 
     - xmlizable: 
@@ -79,7 +155,6 @@ comment: |
       - SmartType: 
         - ↑mode: PLAIN
         - →→: JWT
-  output: false
 ↓element [steps.XMLConcatStep-1693473513010]: 
   nodeName: authUser
   separator: ':'
@@ -141,8 +216,9 @@ comment: |
             - ↑value: ./text()
 ↓access_token [variables.RequestableVariable-1693388276623]: 
   comment: The JWT acess Token
+↓introspectURL [variables.RequestableVariable-1693495840683]: 
+  comment: The URL to call to instrospect and validate the TWT token
+  value: ${lib_oauth.openid.instrospect_url}
 ↓TestOK [core.TestCase]: 
-  ↓access_token [variables.TestCaseVariable-1693388370466]: 
-    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkJhZWxkdW5nIFVzZXIiLCJpYXQiOjE1MTYyMzkwMjJ9.qH7Zj_m3kY69kxhaQXTa-ivIpytKXXjZc1ZSmapZnGE
-  ↓sign_key [variables.TestCaseVariable-1693389265387]: 
-    value: NTNv7j0TuYARvmNMmWXo6fKvM4o6nv/aUi9ryX38ZH+L1bkrnD1ObOQ8JAUmHCBq7Iy7otZcyAagBLHVKvvYaIpmMuxmARQ97jUVG16Jkpkp1wXOPsrF9zwew6TpczyHkHgX5EuLg2MeBuiT/qJACs1J0apruOOJCg/gOtkjB4c=
+  ↓access_token [variables.TestCaseVariable-1693496969990]: 
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
