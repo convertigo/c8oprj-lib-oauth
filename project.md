@@ -16,6 +16,9 @@ This is the OAuth Library for Convertigo applications. This library is used in c
 |lib_oauth.google.keysecret.secret	| The Azure Active Directory Client Secret |
 |lib_oauth.linkedin.clientid	| The LinkedIn Client ID                           |
 |lib_oauth.linkedin.keysecret.secret	| The LinkedIn Client Secret               |
+|lib_oauth.openid.clientid	| The Openid Client id                             |
+|lib_oauth.openid.clientsecret.secret	| The Openid Client Secret             |
+|lib_oauth.openid.introspect_url	| The Openid introspect API endpoint URL       |
 
 ## Best Practices
 
