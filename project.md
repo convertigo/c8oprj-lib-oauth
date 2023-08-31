@@ -659,7 +659,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;access_token
 </td>
 <td>
-
+The JWT acess Token
 </td>
 </tr>
 </table>

@@ -236,7 +236,7 @@ Also if the token is valid, setAuthenticatedUser step is executed to flag this s
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>access_token</td><td></td>
+<td>access_token</td><td>The JWT acess Token</td>
 </tr>
 </table>
 
