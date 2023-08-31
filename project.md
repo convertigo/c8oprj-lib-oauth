@@ -637,9 +637,10 @@ comment
 
 Perform the OAuth flow for OpenID with a JWT acess token
 
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+If the token is valid, it will be stored in the user's session
 
 Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+
 
 
 <span style="color:DarkGoldenRod">Variables</span>
