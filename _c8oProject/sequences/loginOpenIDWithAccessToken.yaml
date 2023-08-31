@@ -1,0 +1,146 @@
+comment: |
+  Perform the OAuth flow for OpenID with a JWT acess token
+  
+  If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+  
+  Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+  
+↓Input_variables [steps.InputVariablesStep-1693388276584]: 
+↓SaveTokenInUserSession [steps.SessionSetStep-1693388276590]: 
+  expression: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: SOURCE
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1693388276584
+          - java.lang.String: 
+            - ↑value: ./access_token/text()
+  key: oAuthAccessToken
+↓DecodeJWT [steps.SimpleStep-1693388427862]: 
+  expression: |
+    '
+    
+    var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+        // Regular expression to check formal correctness of base64 encoded strings
+        b64re = /^(?:[A-Za-z\d+\/]{4})*?(?:[A-Za-z\d+\/]{2}(?:==)?|[A-Za-z\d+\/]{3}=?)?$/;
+            
+    atob = function(string) {
+            // atob can work with strings with whitespaces, even inside the encoded part,
+            // but only \t, \n, \f, \r and '' '', which can be stripped.
+            string = String(string).replace(/[\t\n\f\r ]+/g, "");
+            if (!b64re.test(string))
+                throw new TypeError("Failed to execute ''atob'' on ''Window'': The string to be decoded is not correctly encoded.");
+    
+            // Adding the padding if missing, for semplicity
+            string += "==".slice(2 - (string.length & 3));
+            var bitmap, result = "", r1, r2, i = 0;
+            for (; i < string.length;) {
+                bitmap = b64.indexOf(string.charAt(i++)) << 18 | b64.indexOf(string.charAt(i++)) << 12
+                        | (r1 = b64.indexOf(string.charAt(i++))) << 6 | (r2 = b64.indexOf(string.charAt(i++)));
+    
+                result += r1 === 64 ? String.fromCharCode(bitmap >> 16 & 255)
+                        : r2 === 64 ? String.fromCharCode(bitmap >> 16 & 255, bitmap >> 8 & 255)
+                        : String.fromCharCode(bitmap >> 16 & 255, bitmap >> 8 & 255, bitmap & 255);
+            }
+            return result;
+     };
+     
+    
+    token = access_token
+    // Récupérer le payload (seconde partie du token)
+    const base64Url = token.split(''.'')[1];
+      
+    // Corriger le padding de la chaîne Base64 si nécessaire
+    const base64 = base64Url.replace(''-'', ''+'').replace(''_'', ''/'');
+      
+    // Décoder la chaîne Base64 pour obtenir une chaîne JSON
+    const jsonPayload = decodeURIComponent(atob(base64).split('''').map(function(c) {
+        return ''%'' + (''00'' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''''));
+    
+    // Parse la chaîne JSON pour obtenir un objet JavaScript
+    jsonJWT =  JSON.parse(jsonPayload);
+    
+    log.warn(JSON.stringify(jsonJWT));
+     '
+↓object [steps.JsonToXmlStep-1693470137902]: 
+  jsonObject: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: JS
+        - →→: jsonJWT
+  key: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: PLAIN
+        - →→: JWT
+  output: false
+↓element [steps.XMLConcatStep-1693473513010]: 
+  nodeName: authUser
+  separator: ':'
+  sourcesDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: openid
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1693470137902
+                - java.lang.String: 
+                  - ↑value: ./sub/text()
+            - java.lang.String: 
+              - ↑value: ''
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1693470137902
+                - java.lang.String: 
+                  - ↑value: ./name/text()
+            - java.lang.String: 
+              - ↑value: ''
+↓login [steps.XMLElementStep-1693473893178]: 
+  nodeName: login
+  nodeText: ok
+↓authenticatedUserID [steps.SetAuthenticatedUserStep-1693473742793]: 
+  userid: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: SOURCE
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1693473513010
+          - java.lang.String: 
+            - ↑value: ./text()
+↓access_token [variables.RequestableVariable-1693388276623]: 
+↓TestOK [core.TestCase]: 
+  ↓access_token [variables.TestCaseVariable-1693388370466]: 
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkJhZWxkdW5nIFVzZXIiLCJpYXQiOjE1MTYyMzkwMjJ9.qH7Zj_m3kY69kxhaQXTa-ivIpytKXXjZc1ZSmapZnGE
+  ↓sign_key [variables.TestCaseVariable-1693389265387]: 
+    value: NTNv7j0TuYARvmNMmWXo6fKvM4o6nv/aUi9ryX38ZH+L1bkrnD1ObOQ8JAUmHCBq7Iy7otZcyAagBLHVKvvYaIpmMuxmARQ97jUVG16Jkpkp1wXOPsrF9zwew6TpczyHkHgX5EuLg2MeBuiT/qJACs1J0apruOOJCg/gOtkjB4c=

@@ -630,6 +630,41 @@ comment
 
 </p></blockquote></details>
 
+<details><summary><b>loginOpenIDWithAccessToken</b> : Perform the OAuth flow for OpenID with a JWT acess token</summary><blockquote><p>
+
+
+## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginOpenIDWithAccessToken
+
+Perform the OAuth flow for OpenID with a JWT acess token
+
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+
+
+<span style="color:DarkGoldenRod">Variables</span>
+
+<table>
+<tr>
+<th>
+name
+</th>
+<th>
+comment
+</th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;access_token
+</td>
+<td>
+
+</td>
+</tr>
+</table>
+
+</p></blockquote></details>
+
 <details><summary><b>SignOut</b> : Sign out from App</summary><blockquote><p>
 
 

@@ -39,10 +39,12 @@ For more technical informations : [documentation](./project.md)
     - [checkAccessTokenGoogle](#checkaccesstokengoogle)
     - [checkAccessTokenLinkedIn](#checkaccesstokenlinkedin)
     - [GetOAuthCredentials](#getoauthcredentials)
+    - [listGroupsAzureAd](#listgroupsazuread)
     - [loginAzureAdWithAccessToken](#loginazureadwithaccesstoken)
     - [loginGitHubWithCode](#logingithubwithcode)
     - [loginGoogleWithCode](#logingooglewithcode)
     - [loginLinkedInWithCode](#loginlinkedinwithcode)
+    - [loginOpenIDWithAccessToken](#loginopenidwithaccesstoken)
     - [SignOut](#signout)
 
 
@@ -105,6 +107,10 @@ This as to be called by client apps to decide whenever or not they have to displ
 ### GetOAuthCredentials
 
 Returns to the client the public OAuth credentials
+
+### listGroupsAzureAd
+
+Returns the list of groups for a user for AzureAD
 
 ### loginAzureAdWithAccessToken
 
@@ -210,6 +216,26 @@ Also if the token is valid, setAuthenticatedUser step is executed to flag this s
 </tr>
 <tr>
 <td>redirect_uri</td><td></td>
+</tr>
+</table>
+
+### loginOpenIDWithAccessToken
+
+Perform the OAuth flow for OpenID with a JWT acess token
+
+If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+
+Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>access_token</td><td></td>
 </tr>
 </table>
 
