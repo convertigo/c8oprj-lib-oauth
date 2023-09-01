@@ -1,6 +1,6 @@
 authPassword: xe6e30f193254e0d691a72418fca3a3fc9088bbfe56af469fc72c161e37930c7092ee0a15b8d2bbb999e5a43872520347
 authUser: ${lib_oauth.openid.clientid}
-authenticationType: Basic
+authenticationType: BasicPreemptive
 ↓Default_transaction [transactions.HttpTransaction]: 
   ↑default: true
 ↓Introspect [transactions.JsonHttpTransaction]: 
