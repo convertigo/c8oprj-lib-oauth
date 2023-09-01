@@ -48,7 +48,7 @@ comment: |
           - ↑value: 1693388276584
         - java.lang.String: 
           - ↑value: ./introspectURL/text()
-  sourceTransaction: lib_OAuth.OpenIID.Introspect
+  sourceTransaction: lib_OAuth.OpenID.Introspect
   ↓__body [variables.StepVariable-1693495799960]: 
     sourceDefinition: 
       - xmlizable: 
