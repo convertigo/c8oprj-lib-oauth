@@ -10,7 +10,7 @@ comment: |
 ↓token [steps.XMLConcatStep-1693496055567]: 
   nodeName: token
   output: false
-  separator: ':'
+  separator: =
   sourcesDefinition: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
