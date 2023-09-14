@@ -186,7 +186,7 @@ comment: |
               - java.lang.String: 
                 - ↑value: ''
   ↓login2 [steps.XMLElementStep-1693473893178]: 
-    nodeName: login2
+    nodeName: login
     nodeText: ok
   ↓authenticatedUserID [steps.SetAuthenticatedUserStep-1693473742793]: 
     userid: 
@@ -199,6 +199,24 @@ comment: |
               - ↑value: 1693473513010
             - java.lang.String: 
               - ↑value: ./text()
+  ↓Call_Sequence [steps.SequenceStep-1694707534295]: 
+    sourceSequence: lib_UserManager.SetUserAttribute
+    ↓user [variables.StepVariable-1694707534298]: 
+      comment: The user where we have to set the attribute on
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1693473513010
+            - java.lang.String: 
+              - ↑value: ./text()
+    ↓attribute [variables.StepVariable-1694707534301]: 
+      comment: The attribute name
+      value: oAuthFrom
+    ↓value [variables.StepVariable-1694707534304]: 
+      comment: The attribute value
+      value: OpenID
   ↓Return [steps.ReturnStep-1693501921129]: 
 ↓login [steps.XMLElementStep-1693501927686]: 
   nodeName: login

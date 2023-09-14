@@ -124,6 +124,24 @@ comment: |
     ↓jElement1 [steps.ElementStep-1602831362621]: 
       expression: gid
       nodeName: authUser
+    ↓Call_Sequence [steps.SequenceStep-1694707781667]: 
+      sourceSequence: lib_UserManager.SetUserAttribute
+      ↓user [variables.StepVariable-1694707781670]: 
+        comment: The user where we have to set the attribute on
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1602831362621
+              - java.lang.String: 
+                - ↑value: ./text()
+      ↓attribute [variables.StepVariable-1694707781673]: 
+        comment: The attribute name
+        value: oAuthFrom
+      ↓value [variables.StepVariable-1694707781681]: 
+        comment: The attribute value
+        value: Google
   ↓jElse [steps.ElseStep-1572766265542]: 
     ↓Copy [steps.XMLCopyStep-1572766330780]: 
       sourceDefinition: 

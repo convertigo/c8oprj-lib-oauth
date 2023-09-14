@@ -29,7 +29,7 @@
     Follow the https://doc.convertigo.com/documentation/latest/reference-manual/convertigo-objects/mobile-application/components/action-components/oauth-openid instructions to learn on how to configure your OAuth IDP.
     
     '
-  version: 1.2.0
+  version: 1.3.0
   ↓GitHubOAuth [connectors.HttpConnector]: 🗏 connectors/GitHubOAuth.yaml
   ↓GoogleOAuth [connectors.HttpConnector]: 🗏 connectors/GoogleOAuth.yaml
   ↓LinkedInApi [connectors.HttpConnector]: 🗏 connectors/LinkedInApi.yaml
@@ -48,3 +48,5 @@
   ↓loginLinkedInWithCode [sequences.GenericSequence]: 🗏 sequences/loginLinkedInWithCode.yaml
   ↓loginOpenIDWithAccessToken [sequences.GenericSequence]: 🗏 sequences/loginOpenIDWithAccessToken.yaml
   ↓SignOut [sequences.GenericSequence]: 🗏 sequences/SignOut.yaml
+  ↓project [references.ProjectSchemaReference]: 
+    projectName: lib_UserManager
