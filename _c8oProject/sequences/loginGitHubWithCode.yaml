@@ -181,7 +181,7 @@ comment: |
       nodeName: login
       nodeText: ok
     ↓Call_Sequence [steps.SequenceStep-1694707910324]: 
-      sourceSequence: lib_UserManager.SetUserAttribute
+      sourceSequence: lib_OAuth.setLastConnected
       ↓user [variables.StepVariable-1694707910327]: 
         comment: The user where we have to set the attribute on
         sourceDefinition: 
@@ -192,12 +192,6 @@ comment: |
                 - ↑value: 1675243531548
               - java.lang.String: 
                 - ↑value: ./text()
-      ↓attribute [variables.StepVariable-1694707910330]: 
-        comment: The attribute name
-        value: oAuthFrom
-      ↓value [variables.StepVariable-1694707910333]: 
-        comment: The attribute value
-        value: GitHub
   ↓jElse [steps.ElseStep-1675261688069]: 
     ↓login [steps.XMLElementStep-1675261720110]: 
       nodeName: login

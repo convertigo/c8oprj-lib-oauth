@@ -1,0 +1,17 @@
+accessibility: Private
+comment: Sets a lastConnected timestamp in the user database
+↓ComputeTimeStamp [steps.SimpleStep-1694785192688]: 
+  comment: computes a Timestamp in 'value' variable
+  expression: |
+    value = new Date().toISOString();
+    
+↓Call_Sequence [steps.SequenceStep-1694785134215]: 
+  sourceSequence: lib_UserManager.SetUserAttribute
+  ↓user [variables.StepVariable-1694785134218]: 
+    comment: The user where we have to set the attribute on
+  ↓attribute [variables.StepVariable-1694785134221]: 
+    comment: The attribute name
+    value: lastConnected
+  ↓value [variables.StepVariable-1694785134224]: 
+    comment: The attribute value
+↓user [variables.RequestableVariable-1694785157413]: 

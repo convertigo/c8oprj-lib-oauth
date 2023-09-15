@@ -48,6 +48,7 @@ For more technical informations : [documentation](./project.md)
     - [loginGoogleWithCode](#logingooglewithcode)
     - [loginLinkedInWithCode](#loginlinkedinwithcode)
     - [loginOpenIDWithAccessToken](#loginopenidwithaccesstoken)
+    - [setLastConnected](#setlastconnected)
     - [SignOut](#signout)
 
 
@@ -243,6 +244,21 @@ Also if the token is valid, setAuthenticatedUser step is executed to flag this s
 </tr>
 <tr>
 <td>introspectURL</td><td>The URL to call to instrospect and validate the TWT token</td>
+</tr>
+</table>
+
+### setLastConnected
+
+Sets a lastConnected timestamp in the user database
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>user</td><td></td>
 </tr>
 </table>
 

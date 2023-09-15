@@ -200,7 +200,7 @@ comment: |
             - java.lang.String: 
               - ↑value: ./text()
   ↓Call_Sequence [steps.SequenceStep-1694707534295]: 
-    sourceSequence: lib_UserManager.SetUserAttribute
+    sourceSequence: lib_OAuth.setLastConnected
     ↓user [variables.StepVariable-1694707534298]: 
       comment: The user where we have to set the attribute on
       sourceDefinition: 
@@ -211,12 +211,6 @@ comment: |
               - ↑value: 1693473513010
             - java.lang.String: 
               - ↑value: ./text()
-    ↓attribute [variables.StepVariable-1694707534301]: 
-      comment: The attribute name
-      value: oAuthFrom
-    ↓value [variables.StepVariable-1694707534304]: 
-      comment: The attribute value
-      value: OpenID
   ↓Return [steps.ReturnStep-1693501921129]: 
 ↓login [steps.XMLElementStep-1693501927686]: 
   nodeName: login

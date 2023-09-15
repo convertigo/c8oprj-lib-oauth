@@ -149,7 +149,7 @@ comment: |
             - java.lang.String: 
               - ↑value: ./document/object
     ↓Call_Sequence [steps.SequenceStep-1694707966028]: 
-      sourceSequence: lib_UserManager.SetUserAttribute
+      sourceSequence: lib_OAuth.setLastConnected
       ↓user [variables.StepVariable-1694707966031]: 
         comment: The user where we have to set the attribute on
         sourceDefinition: 
@@ -160,12 +160,6 @@ comment: |
                 - ↑value: 1572959831948
               - java.lang.String: 
                 - ↑value: ./text()
-      ↓attribute [variables.StepVariable-1694707966034]: 
-        comment: The attribute name
-        value: oAuthFrom
-      ↓value [variables.StepVariable-1694707966037]: 
-        comment: The attribute value
-        value: Azure
   ↓jElse [steps.ElseStep-1493626951780]: 
     ↓login [steps.XMLElementStep-1493626957726]: 
       nodeName: login

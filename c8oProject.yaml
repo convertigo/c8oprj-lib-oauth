@@ -47,6 +47,7 @@
   ↓loginGoogleWithCode [sequences.GenericSequence]: 🗏 sequences/loginGoogleWithCode.yaml
   ↓loginLinkedInWithCode [sequences.GenericSequence]: 🗏 sequences/loginLinkedInWithCode.yaml
   ↓loginOpenIDWithAccessToken [sequences.GenericSequence]: 🗏 sequences/loginOpenIDWithAccessToken.yaml
+  ↓setLastConnected [sequences.GenericSequence]: 🗏 sequences/setLastConnected.yaml
   ↓SignOut [sequences.GenericSequence]: 🗏 sequences/SignOut.yaml
   ↓project [references.ProjectSchemaReference]: 
     projectName: lib_UserManager

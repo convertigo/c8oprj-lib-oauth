@@ -736,6 +736,36 @@ The URL to call to instrospect and validate the TWT token
 
 </p></blockquote></details>
 
+<details><summary><b>setLastConnected</b> : Sets a lastConnected timestamp in the user database</summary><blockquote><p>
+
+
+## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") setLastConnected
+
+Sets a lastConnected timestamp in the user database
+
+<span style="color:DarkGoldenRod">Variables</span>
+
+<table>
+<tr>
+<th>
+name
+</th>
+<th>
+comment
+</th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;user
+</td>
+<td>
+
+</td>
+</tr>
+</table>
+
+</p></blockquote></details>
+
 <details><summary><b>SignOut</b> : Sign out from App</summary><blockquote><p>
 
 
