@@ -15,7 +15,7 @@ comment: |
         - java.lang.String: 
           - ↑value: 1493887163175
         - java.lang.String: 
-          - ↑value: ./key
+          - ↑value: ./expression
   ↓Call_Transaction [steps.TransactionStep-1494098855221]: 
     sourceTransaction: lib_OAuth.MicrosoftGraphApi.Me
     ↓__header_Authorization [variables.StepVariable-1493887231390]: 
