@@ -31,7 +31,7 @@
     '
   contextTimeout: ${lib_OAuth.context.timeout=60}
   httpSessionTimeout: ${lib_OAuth.http_session.timeout=60}
-  version: 1.3.2
+  version: 8.0.0.0
   ↓GitHubOAuth [connectors.HttpConnector]: 🗏 connectors/GitHubOAuth.yaml
   ↓GoogleOAuth [connectors.HttpConnector]: 🗏 connectors/GoogleOAuth.yaml
   ↓LinkedInApi [connectors.HttpConnector]: 🗏 connectors/LinkedInApi.yaml
