@@ -47,6 +47,15 @@ comment: |
               - ↑value: 1493887163175
             - java.lang.String: 
               - ↑value: ./expression/text()
+    ↓Copy [steps.XMLCopyStep-1741084848029]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1494098855221
+            - java.lang.String: 
+              - ↑value: ./document/object
     ↓Return [steps.ReturnStep-1494098900429]: 
 ↓login [steps.XMLElementStep-1494098908511]: 
   nodeName: notoken
