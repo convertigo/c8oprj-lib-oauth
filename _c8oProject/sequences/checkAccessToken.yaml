@@ -27,7 +27,8 @@ comment: |
               - ↑value: 1493887163175
             - java.lang.String: 
               - ↑value: ./expression/text()
-  ↓IfExist [steps.IfExistStep-1494098855224]: 
+  ↓IfExist [steps.IfExistThenElseStep-1742321981961]: 
+    condition: IfExist
     sourceDefinition: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
@@ -36,27 +37,43 @@ comment: |
             - ↑value: 1494098855221
           - java.lang.String: 
             - ↑value: ./document/object/userPrincipalName
-    ↓login [steps.XMLElementStep-1493887774971]: 
-      nodeName: token
-      nodeText: ok
-      sourceDefinition: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - java.lang.String: 
-              - ↑value: 1493887163175
-            - java.lang.String: 
-              - ↑value: ./expression/text()
-    ↓Copy [steps.XMLCopyStep-1741084848029]: 
-      sourceDefinition: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - java.lang.String: 
-              - ↑value: 1494098855221
-            - java.lang.String: 
-              - ↑value: ./document/object
-    ↓Return [steps.ReturnStep-1494098900429]: 
+    ↓jThen [steps.ThenStep-1742321981963]: 
+      ↓login [steps.XMLElementStep-1493887774971]: 
+        nodeName: token
+        nodeText: ok
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1493887163175
+              - java.lang.String: 
+                - ↑value: ./expression/text()
+      ↓Copy [steps.XMLCopyStep-1741084848029]: 
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1494098855221
+              - java.lang.String: 
+                - ↑value: ./document/object
+      ↓Return [steps.ReturnStep-1494098900429]: 
+    ↓jElse [steps.ElseStep-1742321981965]: 
+      ↓Error_structure [steps.XMLErrorStep-1742322007494]: 
+        details: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+            - SmartType: 
+              - ↑mode: PLAIN
+              - →→: The token is invalid. As token validity is 1 hour, it probably has exipred
+        message: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+            - SmartType: 
+              - ↑mode: PLAIN
+              - →→: Invalid or expired token
+      ↓Return [steps.ReturnStep-1742322057309]: 
 ↓login [steps.XMLElementStep-1494098908511]: 
   nodeName: notoken
   nodeText: true
