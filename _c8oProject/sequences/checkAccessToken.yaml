@@ -60,6 +60,8 @@ comment: |
                 - ↑value: ./document/object
       ↓Return [steps.ReturnStep-1494098900429]: 
     ↓jElse [steps.ElseStep-1742321981965]: 
+      ↓Remove_from_session [steps.SessionRemoveStep-1742493922041]: 
+        key: oAuthAccessToken
       ↓Error_structure [steps.XMLErrorStep-1742322007494]: 
         details: 
           - xmlizable: 
