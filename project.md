@@ -36,7 +36,7 @@ Follow the https://doc.convertigo.com/documentation/latest/reference-manual/conv
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/references/images/ProjectSchemaReference_16x16.png?raw=true "ProjectSchemaReference") lib_UserManager
 
 
-see [readme](https://github.com/convertigo/c8oprj-lib-user-manager/tree/be96f9e917a28e5c20f87c190fc29c6ae1b5b609#readme)
+see [readme](https://github.com/convertigo/c8oprj-lib-user-manager/tree/8.0.X#readme)
 </p></blockquote></details>
 
 <details><summary><span style="color:DarkGoldenRod"><i>Connectors</i></span></summary><blockquote><p>

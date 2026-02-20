@@ -155,6 +155,56 @@ ${title}${lineBreak}
 ${lineBreak}
 </#macro>
 
+<#-- authModesSymbols : explains which project symbols are needed for each login mode -->
+<#macro authModesSymbols>
+## Authentication Modes And Required Symbols
+
+<a id="auth-mode-google"></a>
+### Google Login (loginGoogleWithCode / checkAccessTokenGoogle)
+
+| symbol                            | Required | Usage |
+|-----------------------------------|----------|-------|
+| lib_oauth.google.clientid         | yes      | Google OAuth client id returned by `GetOAuthCredentials` and used by `loginGoogleWithCode` |
+| lib_oauth.google.keysecret.secret | yes      | Google OAuth client secret sent as `keySecret` during code-to-token exchange |
+
+<a id="auth-mode-microsoft"></a>
+### Microsoft Login (loginAzureAdWithAccessToken / checkAccessToken)
+
+| symbol                    | Required | Usage |
+|---------------------------|----------|-------|
+| lib_oauth.azuread.clientid | yes      | Azure AD app client id returned by `GetOAuthCredentials` for client-side OAuth |
+| lib_oauth.azuread.tenantid | yes      | Azure AD tenant id returned by `GetOAuthCredentials` and used to target the right authority |
+
+<a id="auth-mode-linkedin"></a>
+### LinkedIn Login (loginLinkedInWithCode / checkAccessTokenLinkedIn)
+
+| symbol                              | Required | Usage |
+|-------------------------------------|----------|-------|
+| lib_oauth.linkedin.clientid         | yes      | LinkedIn OAuth client id returned by `GetOAuthCredentials` and used by `loginLinkedInWithCode` |
+| lib_oauth.linkedin.keysecret.secret | yes      | LinkedIn OAuth client secret sent as `keySecret` during code-to-token exchange |
+
+<a id="auth-mode-github"></a>
+### GitHub Login (loginGitHubWithCode)
+
+| symbol                            | Required | Usage |
+|-----------------------------------|----------|-------|
+| lib_oauth.github.clientid         | yes      | GitHub OAuth client id returned by `GetOAuthCredentials` and used by `loginGitHubWithCode` |
+| lib_oauth.github.keysecret.secret | yes      | GitHub OAuth client secret sent as `keySecret` during code-to-token exchange |
+
+<a id="auth-mode-openid"></a>
+### OpenID Login (loginOpenIDWithAccessToken / checkAccessOpenID)
+
+| symbol                                | Required | Usage |
+|---------------------------------------|----------|-------|
+| lib_oauth.openid.clientid             | yes      | OpenID client id returned by `GetOAuthCredentials` |
+| lib_oauth.openid.endpoint             | yes      | OpenID provider endpoint returned by `GetOAuthCredentials` for client-side OAuth/OpenID actions |
+| lib_oauth.openid.clientsecret.secret  | optional | OpenID client secret (required for providers/flows needing a confidential client) |
+| lib_oauth.openid.instrospect_url      | yes      | Introspection endpoint used by `loginOpenIDWithAccessToken` (`introspectURL` variable default) |
+
+`redirect_uri` is sent by the client application and must match the redirect URI configured on each provider.
+${lineBreak}
+</#macro>
+
 <#-- DEFAULT PROJECT TEMPLATE -->
 
 <#-- anchors variable for TOC : do not modify -->
@@ -168,6 +218,7 @@ ${lineBreak}
 <#assign intro>
 	<@header toc=toc anchors=anchors heading="#" text=project.label />
 	<@comment text=project.comment />
+	<@authModesSymbols />
 	<#-- you can add your text or own macro call here to add something -->
 	<#--
 	This is text i want to add after the project comment
@@ -286,4 +337,3 @@ ${help("more.info")} : [documentation](./project.md)
 
 <#-- output project content -->
 ${content}
-
