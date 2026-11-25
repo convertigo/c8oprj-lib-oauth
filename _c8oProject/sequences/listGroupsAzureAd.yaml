@@ -1,6 +1,11 @@
 comment: Returns the list of groups for a user for AzureAD
+↓NoLog_Call_Sequence [steps.SimpleStep-1799100000025]: 
+  comment: The answer of checkAccessToken holds the Bearer of the user, the engine would log it (Generated XML) in this thread
+  expression: org.apache.log4j.MDC.put("nolog", true);
 ↓Call_Sequence [steps.SequenceStep-1676282915157]: 
   sourceSequence: lib_OAuth.checkAccessToken
+↓Log_Call_Sequence [steps.SimpleStep-1799100000026]: 
+  expression: org.apache.log4j.MDC.remove("nolog");
 ↓IfExist [steps.IfExistStep-1676282915160]: 
   sourceDefinition: 
     - xmlizable: 
@@ -10,6 +15,9 @@ comment: Returns the list of groups for a user for AzureAD
           - ↑value: 1676282915157
         - java.lang.String: 
           - ↑value: ./document/token
+  ↓NoLog_Call_Transaction [steps.SimpleStep-1799100000027]: 
+    comment: The request carries the Bearer of the user (Authorization header, traced by the Beans logger), no log of this call in this thread
+    expression: org.apache.log4j.MDC.put("nolog", true);
   ↓Call_Transaction [steps.TransactionStep-1676282915163]: 
     sourceTransaction: lib_OAuth.MicrosoftGraphApi.groups
     ↓__header_Authorization [variables.StepVariable-1676282915166]: 
@@ -21,6 +29,9 @@ comment: Returns the list of groups for a user for AzureAD
               - ↑value: 1676282915157
             - java.lang.String: 
               - ↑value: ./document/token/text()
+      visibility: '-1'
+  ↓Log_Call_Transaction [steps.SimpleStep-1799100000028]: 
+    expression: org.apache.log4j.MDC.remove("nolog");
   ↓groups [steps.JsonArrayStep-1676282915169]: 
     key: 
       - xmlizable: 

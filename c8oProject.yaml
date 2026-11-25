@@ -19,6 +19,44 @@
     |lib_oauth.openid.clientid	| The Openid Client id                             |
     |lib_oauth.openid.clientsecret.secret	| The Openid Client Secret             |
     |lib_oauth.openid.introspect_url	| The Openid introspect API endpoint URL       |
+    |lib_oauth.openid.issuer	| Optional. The OpenID issuer URL used to verify access tokens (defaults to the iss of the introspection response) |
+    |lib_oauth.openid.audience	| Optional. Comma separated access token audiences accepted besides the OpenID client id |
+    |lib_oauth.callback.allowed_origins	| Optional. Comma separated origins (https://host[:port]) of the applications of other servers allowed to receive the answer of the callback pages; the applications of this server are always allowed |
+    |lib_oauth.openid.scope	| Optional. Scopes requested by the OpenID sign-in, separated by spaces or commas (default `openid profile email`; `openid` is always requested) |
+    |lib_oauth.openid.groups_claim	| Optional. Claim that holds the groups of an OpenID user (for example `groups`, `roles` or `realm_access.roles`); empty: the groups are not read |
+    
+    ## Token verification
+    
+    JWT are verified by *js/jwt_verify.js* before any claim is used: signature (RS256/ES256 family, keys from the provider JWKS found by OpenID discovery and cached), issuer, audience (the configured client id), exp / nbf / iat with 5 minutes of clock skew. Tokens with alg none or HS* are refused.
+    
+    The client ids lib_oauth.google.clientid, lib_oauth.azuread.clientid and lib_oauth.openid.clientid must be defined on the server for the Google, Microsoft and OpenID sign-ins: the tokens are checked against them, and the sign-in is refused when the symbol is not defined.
+    
+    - *loginGoogleWithCode*: the id_token returned by the token endpoint must be issued by Google for lib_oauth.google.clientid.
+    - *loginAzureAdWithAccessToken*: the id_token sent with the access token is required. It must be issued for lib_oauth.azuread.clientid by lib_oauth.azuread.tenantid (common / organizations accept any tenant) and its at_hash must match the access token.
+    - *loginOpenIDWithAccessToken*: the introspection response is authoritative: active, sub, exp / nbf when present, iss equal to lib_oauth.openid.issuer when both are known.
+        - opaque access token: the introspection client_id or aud must contain lib_oauth.openid.clientid (or a lib_oauth.openid.audience value); the claims are the introspection response.
+        - JWT access token: also signed by the issuer (discovery of lib_oauth.openid.issuer, or of the introspection iss) and issued for the client id (aud, azp, client_id or cid claim, or introspection client_id / aud).
+        - Microsoft Entra (issuer login.microsoftonline.com / sts.windows.net, or a nonce in the access token header as in Graph tokens, which only Microsoft can verify): the id_token variable is verified instead (issuer, aud = client id, at_hash of the access token, sub equal to the introspected sub); without id_token the opaque token rules apply.
+    
+    ## OpenID scopes and groups
+    
+    *GetOAuthCredentials* returns `OpenIDScope`: the scopes of lib_oauth.openid.scope, URL encoded for the scope of the OAuth action, which adds it to the authorization URL as it is. Without the symbol it is `openid%20profile%20email`, the scopes of the earlier versions. An invalid value (a character that RFC 6749 does not allow in a scope, more than 50 scopes) is ignored with a warning in the logs.
+    
+    When lib_oauth.openid.groups_claim names a claim, *loginOpenIDWithAccessToken* reads the groups of the user from verified sources only, in this order; the first one that holds the claim decides.
+    
+    1. the id_token sent with the access token, verified like the Microsoft one: signature with the JWKS of the issuer, issuer, audience (client id), dates, at_hash of the access token, sub of the introspection response;
+    2. the verified JWT access token, or the introspection response;
+    3. the userinfo endpoint of the discovery document of the issuer (https only), called with the access token; its sub must be the sub of the user.
+    
+    A string is one group, a list of strings is the list of groups (trimmed, duplicates removed, names with control characters or longer than 256 characters ignored). Any other value, or more than 200 groups, counts as no group. When no source holds the claim, the user has no group. A claim name with dots that is not a claim of its own is a path in nested claims (`realm_access.roles`).
+    
+    The groups are never taken from the client: they are kept on the server, in the session key `oAuthOpenIDGroups` (removed by *SignOut*, and at each sign-in when the symbol is empty): a JSON object `{user, claim, state, groups, source, at}` where `user` is the authenticated user they belong to and `state` is `present` or `missing`. The application decides what the groups give (C8Oforms puts the user in lib_FullSyncGrp groups); this library never grants anything from them. Neither the tokens nor the groups are written in the logs.
+    
+    ## Callback pages
+    
+    The callback pages *getToken.html* (Microsoft, OpenID), *getTokenGoogle.html* and *getTokenLinkedIn.html* give the answer of the provider (access token and id_token, or authorization code) to the window that opened the sign-in popup. They post it only to the origin of this server and to the origins of lib_oauth.callback.allowed_origins (read by the *getCallbackOrigins* sequence, see *js/oauth_callback.js*).
+    
+    An application served by another server that uses the callback of this server (as C8Oforms with the c8ocloud callback) needs its exact origin in lib_oauth.callback.allowed_origins, for example `https://forms.example.com, http://localhost:18080`. `*`, paths and patterns are ignored.
     
     ## Best Practices
     
@@ -31,7 +69,7 @@
     '
   contextTimeout: ${lib_OAuth.context.timeout=60}
   httpSessionTimeout: ${lib_OAuth.http_session.timeout=60}
-  version: 8.0.0.4
+  version: 8.0.1.0
   ↓GitHubOAuth [connectors.HttpConnector]: 🗏 connectors/GitHubOAuth.yaml
   ↓GoogleOAuth [connectors.HttpConnector]: 🗏 connectors/GoogleOAuth.yaml
   ↓LinkedInApi [connectors.HttpConnector]: 🗏 connectors/LinkedInApi.yaml
@@ -42,6 +80,7 @@
   ↓checkAccessToken [sequences.GenericSequence]: 🗏 sequences/checkAccessToken.yaml
   ↓checkAccessTokenGoogle [sequences.GenericSequence]: 🗏 sequences/checkAccessTokenGoogle.yaml
   ↓checkAccessTokenLinkedIn [sequences.GenericSequence]: 🗏 sequences/checkAccessTokenLinkedIn.yaml
+  ↓getCallbackOrigins [sequences.GenericSequence]: 🗏 sequences/getCallbackOrigins.yaml
   ↓GetOAuthCredentials [sequences.GenericSequence]: 🗏 sequences/GetOAuthCredentials.yaml
   ↓listGroupsAzureAd [sequences.GenericSequence]: 🗏 sequences/listGroupsAzureAd.yaml
   ↓loginAzureAdWithAccessToken [sequences.GenericSequence]: 🗏 sequences/loginAzureAdWithAccessToken.yaml

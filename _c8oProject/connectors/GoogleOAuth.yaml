@@ -1,21 +1,23 @@
 ↓Default_transaction [transactions.HttpTransaction]: 
   ↑default: true
-  accessibility: Public
+  accessibility: Private
 ↓DiscoveryDocument [transactions.JsonHttpTransaction]: 
-  accessibility: Public
+  accessibility: Private
   subDir: https://accounts.google.com/.well-known/openid-configuration
 ↓GetToken [transactions.JsonHttpTransaction]: 
-  accessibility: Public
+  accessibility: Private
   httpVerb: POST
   ↓code [variables.RequestableHttpVariable-1572732527246]: 
     httpMethod: POST
     httpName: code
+    visibility: '-1'
   ↓client_id [variables.RequestableHttpVariable-1572732553353]: 
     httpMethod: POST
     httpName: client_id
   ↓client_secret [variables.RequestableHttpVariable-1572732579645]: 
     httpMethod: POST
     httpName: client_secret
+    visibility: '-1'
   ↓redirect_uri [variables.RequestableHttpVariable-1572732602768]: 
     httpMethod: POST
     httpName: redirect_uri

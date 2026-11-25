@@ -5,7 +5,7 @@ server: github.com
 trustAllServerCertificates: false
 ↓GetToken [transactions.JsonHttpTransaction]: 
   ↑default: true
-  accessibility: Public
+  accessibility: Private
   httpParameters: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
@@ -35,11 +35,13 @@ trustAllServerCertificates: false
   ↓client_secret [variables.RequestableHttpVariable-1675184799451]: 
     httpMethod: POST
     httpName: client_secret
+    visibility: '-1'
   ↓code [variables.RequestableHttpVariable-1675185683930]: 
     httpMethod: POST
     httpName: code
+    visibility: '-1'
 ↓User [transactions.JsonHttpTransaction]: 
-  accessibility: Public
+  accessibility: Private
   httpParameters: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
@@ -60,3 +62,5 @@ trustAllServerCertificates: false
               - ↑value: application/json
   subDir: login/user
   ↓__header_Authorization [variables.RequestableHttpVariable-1675190419132]: 
+    comment: Bearer access token of the user, sent as the Authorization header
+    visibility: '-1'

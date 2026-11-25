@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script src="../../scripts/jquery.min.js"></script>
+		<script src="js/oauth_callback.js"></script>
 		<style>
 			body {
 				padding: 0px;
@@ -108,8 +109,8 @@
 	        	if (parsedResponse["state"] == "c8ocsrf") {
 		        	parsedResponse["access_token"] = "none";
 		        	parsedResponse["redirect_uri"] = url.split("?")[0];
-	        		window.opener.postMessage(parsedResponse, '*');
-	        		window.close();
+	        		// posted only to an opener of an allowed origin, then the popup closes (js/oauth_callback.js)
+	        		c8oOAuthCallback.deliver(parsedResponse);
 	        	}
 	        } else {
 	        	console.log("Error on oAuth");

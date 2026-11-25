@@ -2,9 +2,15 @@ https: true
 port: 443
 server: api.linkedin.com
 ↓getEmail [transactions.JsonHttpTransaction]: 
-  accessibility: Public
+  accessibility: Private
   subDir: v2/clientAwareMemberHandles?q=members&projection=(elements*(primary,type,handle~))
+  ↓__header_Authorization [variables.RequestableHttpVariable-1799100000001]: 
+    comment: Bearer access token of the user, sent as the Authorization header
+    visibility: '-1'
 ↓Me [transactions.JsonHttpTransaction]: 
   ↑default: true
-  accessibility: Public
+  accessibility: Private
   subDir: v2/me
+  ↓__header_Authorization [variables.RequestableHttpVariable-1799100000002]: 
+    comment: Bearer access token of the user, sent as the Authorization header
+    visibility: '-1'

@@ -19,6 +19,11 @@ This is the OAuth Library for Convertigo applications. This library is used in c
 |lib_oauth.openid.clientid	| The Openid Client id                             |
 |lib_oauth.openid.clientsecret.secret	| The Openid Client Secret             |
 |lib_oauth.openid.introspect_url	| The Openid introspect API endpoint URL       |
+|lib_oauth.openid.issuer	| Optional. The OpenID issuer URL used to verify access tokens (defaults to the iss of the introspection response) |
+|lib_oauth.openid.audience	| Optional. Comma separated access token audiences accepted besides the OpenID client id |
+|lib_oauth.callback.allowed_origins	| Optional. Comma separated origins (https://host[:port]) of the applications of other servers allowed to receive the answer of the callback pages; the applications of this server are always allowed |
+|lib_oauth.openid.scope	| Optional. Scopes requested by the OpenID sign-in, separated by spaces or commas (default `openid profile email`; `openid` is always requested) |
+|lib_oauth.openid.groups_claim	| Optional. Claim that holds the groups of an OpenID user (for example `groups`, `roles` or `realm_access.roles`); empty: the groups are not read |
 
 ## Best Practices
 
@@ -511,6 +516,14 @@ comment
 
 </td>
 </tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;id_token
+</td>
+<td>
+The id_token returned with the access token by the OAuth action (response_type id_token+token). It is verified and must carry the at_hash of access_token.
+</td>
+</tr>
 </table>
 
 </p></blockquote></details>
@@ -726,10 +739,10 @@ The JWT acess Token
 </tr>
 <tr>
 <td>
-<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;introspectURL
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;id_token
 </td>
 <td>
-The URL to call to instrospect and validate the TWT token
+The id_token returned with the access token (response_type id_token+token). Required to verify Microsoft Graph access tokens, which carry a nonce header; it must carry the at_hash of access_token.
 </td>
 </tr>
 </table>

@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script src="../../scripts/jquery.min.js"></script>
+		<script src="js/oauth_callback.js"></script>
 		<style>
 			body {
 				padding: 0px;
@@ -104,8 +105,8 @@
 	        if (parsedResponse["access_token"] !== undefined &&
 	            parsedResponse["access_token"] !== null) {
 	        		//console.log("access token is : " + parsedResponse["access_token"]);
-	        		window.opener.postMessage(parsedResponse, '*');
-	        		window.close();
+	        		// posted only to an opener of an allowed origin, then the popup closes (js/oauth_callback.js)
+	        		c8oOAuthCallback.deliver(parsedResponse);
 	        } else {
 	        	console.log("Error on oAuth");
 	        }

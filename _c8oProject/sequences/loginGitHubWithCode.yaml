@@ -6,6 +6,9 @@ comment: |
   Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
   
 ↓Input_variables [steps.InputVariablesStep-1675184998887]: 
+↓NoLog_Call_Transaction [steps.SimpleStep-1799100000013]: 
+  comment: The answer of GitHub holds the access token, the engine would log it (Generated XML) in this thread
+  expression: org.apache.log4j.MDC.put("nolog", true);
 ↓Call_Transaction [steps.TransactionStep-1675184998890]: 
   sourceTransaction: lib_OAuth.GitHubOAuth.GetToken
   ↓redirect_uri [variables.StepVariable-1675184998899]: 
@@ -35,7 +38,11 @@ comment: |
             - ↑value: 1675184998887
           - java.lang.String: 
             - ↑value: ./keySecret/text()
+    visibility: '-1'
   ↓code [variables.StepVariable-1675185718596]: 
+    visibility: '-1'
+↓Log_Call_Transaction [steps.SimpleStep-1799100000014]: 
+  expression: org.apache.log4j.MDC.remove("nolog");
 ↓bearer [steps.XMLConcatStep-1675184998908]: 
   nodeName: bearer
   output: false
@@ -83,6 +90,9 @@ comment: |
   nodeName: UserURL
   nodeText: https://api.github.com/user
   output: false
+↓NoLog_Call_Transaction1 [steps.SimpleStep-1799100000015]: 
+  comment: The request carries the Bearer of the user (Authorization header, traced by the Beans logger), no log of this call in this thread
+  expression: org.apache.log4j.MDC.put("nolog", true);
 ↓Call_Transaction1 [steps.TransactionStep-1675190447942]: 
   connectionStringDefinition: 
     - xmlizable: 
@@ -102,6 +112,9 @@ comment: |
             - ↑value: 1675184998908
           - java.lang.String: 
             - ↑value: ./text()
+    visibility: '-1'
+↓Log_Call_Transaction1 [steps.SimpleStep-1799100000016]: 
+  expression: org.apache.log4j.MDC.remove("nolog");
 ↓IfExistThenElse [steps.IfExistThenElseStep-1675261687048]: 
   sourceDefinition: 
     - xmlizable: 
@@ -197,6 +210,7 @@ comment: |
       nodeName: login
       nodeText: ko
 ↓code [variables.RequestableVariable-1675184998953]: 
+  visibility: '-1'
 ↓keySecret [variables.RequestableVariable-1675184998956]: 
   value: 
     - ↑ciphered: true

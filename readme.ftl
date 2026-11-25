@@ -164,7 +164,7 @@ ${lineBreak}
 
 | symbol                            | Required | Usage |
 |-----------------------------------|----------|-------|
-| lib_oauth.google.clientid         | yes      | Google OAuth client id returned by `GetOAuthCredentials` and used by `loginGoogleWithCode` |
+| lib_oauth.google.clientid         | yes      | Google OAuth client id returned by `GetOAuthCredentials`, used by `loginGoogleWithCode` and required as the id_token audience |
 | lib_oauth.google.keysecret.secret | yes      | Google OAuth client secret sent as `keySecret` during code-to-token exchange |
 
 <a id="auth-mode-microsoft"></a>
@@ -172,8 +172,10 @@ ${lineBreak}
 
 | symbol                    | Required | Usage |
 |---------------------------|----------|-------|
-| lib_oauth.azuread.clientid | yes      | Azure AD app client id returned by `GetOAuthCredentials` for client-side OAuth |
-| lib_oauth.azuread.tenantid | yes      | Azure AD tenant id returned by `GetOAuthCredentials` and used to target the right authority |
+| lib_oauth.azuread.clientid | yes      | Azure AD app client id returned by `GetOAuthCredentials` for client-side OAuth, required as the id_token audience |
+| lib_oauth.azuread.tenantid | yes      | Azure AD tenant id returned by `GetOAuthCredentials` and used to target the right authority; the id_token issuer must belong to this tenant (`common` / `organizations`: any tenant) |
+
+`loginAzureAdWithAccessToken` requires the `id_token` returned with the access token (OAuth action with `response_type=id_token+token`, "ID tokens" enabled on the app registration).
 
 <a id="auth-mode-linkedin"></a>
 ### LinkedIn Login (loginLinkedInWithCode / checkAccessTokenLinkedIn)
@@ -196,10 +198,14 @@ ${lineBreak}
 
 | symbol                                | Required | Usage |
 |---------------------------------------|----------|-------|
-| lib_oauth.openid.clientid             | yes      | OpenID client id returned by `GetOAuthCredentials` |
+| lib_oauth.openid.clientid             | yes      | OpenID client id returned by `GetOAuthCredentials`, required as the accepted audience of the tokens |
 | lib_oauth.openid.endpoint             | yes      | OpenID provider endpoint returned by `GetOAuthCredentials` for client-side OAuth/OpenID actions |
 | lib_oauth.openid.clientsecret.secret  | optional | OpenID client secret (required for providers/flows needing a confidential client) |
-| lib_oauth.openid.instrospect_url      | yes      | Introspection endpoint used by `loginOpenIDWithAccessToken` (`introspectURL` variable default) |
+| lib_oauth.openid.instrospect_url      | yes      | Introspection endpoint used by `loginOpenIDWithAccessToken` |
+| lib_oauth.openid.issuer               | optional | Issuer whose discovery document and JWKS verify the access token; defaults to the `iss` of the introspection response |
+| lib_oauth.openid.audience             | optional | Comma separated access token audiences accepted besides `lib_oauth.openid.clientid` |
+| lib_oauth.openid.scope                | optional | Scopes of the OpenID sign-in returned URL encoded by `GetOAuthCredentials` (`OpenIDScope`); default `openid profile email` |
+| lib_oauth.openid.groups_claim         | optional | Claim holding the groups of the user, kept in the session key `oAuthOpenIDGroups` (see [OpenID scopes and groups](#openid-scopes-and-groups)); empty: no group read |
 
 `redirect_uri` is sent by the client application and must match the redirect URI configured on each provider.
 ${lineBreak}

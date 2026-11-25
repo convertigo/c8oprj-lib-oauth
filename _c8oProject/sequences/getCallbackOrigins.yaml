@@ -1,0 +1,4 @@
+comment: Returns the origins allowed to receive the answer of an OAuth provider from the callback pages getToken.html, getTokenGoogle.html and getTokenLinkedIn.html besides the origin of this server (symbol lib_oauth.callback.allowed_origins, see js/oauth_callback.js)
+↓origins [steps.XMLElementStep-1794312300392]: 
+  nodeName: origins
+  nodeText: ${lib_oauth.callback.allowed_origins=}

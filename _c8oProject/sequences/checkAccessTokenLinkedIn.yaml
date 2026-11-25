@@ -16,6 +16,9 @@ comment: |
           - ↑value: 1516360215760
         - java.lang.String: 
           - ↑value: ./key
+  ↓NoLog_Call_Transaction [steps.SimpleStep-1799100000023]: 
+    comment: The request carries the Bearer of the user (Authorization header, traced by the Beans logger), no log of this call in this thread
+    expression: org.apache.log4j.MDC.put("nolog", true);
   ↓Call_Transaction [steps.TransactionStep-1516360215773]: 
     sourceTransaction: lib_OAuth.LinkedInApi.Me
     ↓__header_Authorization [variables.StepVariable-1516360215779]: 
@@ -27,6 +30,9 @@ comment: |
               - ↑value: 1516360215760
             - java.lang.String: 
               - ↑value: ./expression/text()
+      visibility: '-1'
+  ↓Log_Call_Transaction [steps.SimpleStep-1799100000024]: 
+    expression: org.apache.log4j.MDC.remove("nolog");
   ↓IfExist [steps.IfExistStep-1516360215783]: 
     sourceDefinition: 
       - xmlizable: 

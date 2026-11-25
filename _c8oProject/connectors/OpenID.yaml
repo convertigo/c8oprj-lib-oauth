@@ -3,7 +3,12 @@ authUser: ${lib_oauth.openid.clientid}
 authenticationType: BasicPreemptive
 ↓Default_transaction [transactions.HttpTransaction]: 
   ↑default: true
+  accessibility: Private
 ↓Introspect [transactions.JsonHttpTransaction]: 
+  accessibility: Private
+  followRedirect: false
   httpVerb: POST
   ↓__body [variables.RequestableHttpVariable-1693495739263]: 
+    comment: Introspection request body, holds the access token of the user
     httpMethod: POST
+    visibility: '-1'

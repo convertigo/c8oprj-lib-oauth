@@ -3,7 +3,7 @@ port: 443
 server: www.linkedin.com
 ↓Authorize [transactions.JsonHttpTransaction]: 
   ↑default: true
-  accessibility: Public
+  accessibility: Private
   httpVerb: POST
   subDir: oauth/v2/accessToken
   ↓grant_type [variables.RequestableHttpVariable-1516297219331]: 
@@ -13,6 +13,7 @@ server: www.linkedin.com
   ↓code [variables.RequestableHttpVariable-1516297219337]: 
     httpMethod: POST
     httpName: code
+    visibility: '-1'
   ↓redirect_uri [variables.RequestableHttpVariable-1516297219343]: 
     httpMethod: POST
     httpName: redirect_uri
@@ -22,3 +23,4 @@ server: www.linkedin.com
   ↓client_secret [variables.RequestableHttpVariable-1516297219354]: 
     httpMethod: POST
     httpName: client_secret
+    visibility: '-1'

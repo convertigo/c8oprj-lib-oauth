@@ -6,6 +6,24 @@ comment: |
   Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
   
 ↓Input_variables [steps.InputVariablesStep-1493471066094]: 
+↓VerifyIdToken [steps.SimpleStep-1790600000005]: 
+  comment: Checks the id_token signature (Microsoft JWKS), issuer (lib_oauth.azuread.tenantid), audience (lib_oauth.azuread.clientid), validity dates and its at_hash binding to the access token
+  expression: |
+    'include("js/jwt_verify.js");
+    // The id_token must be issued for lib_oauth.azuread.clientid by the configured tenant and bound to the access token (at_hash)
+    var verification = libOAuthJwt.verifyAzureAdIdToken(id_token == null ? "" : String(id_token), access_token == null ? "" : String(access_token));
+    id_token_verified = verification.ok;
+    id_token_oid = verification.ok ? verification.claims.oid : null;
+    if (!verification.ok) {
+    	log.warn("(lib_OAuth.loginAzureAdWithAccessToken) id_token rejected: " + verification.error);
+    }
+    '
+↓RejectUnverifiedIdToken [steps.IfStep-1790600000006]: 
+  condition: '!id_token_verified'
+  ↓LoginRejected [steps.XMLElementStep-1790600000007]: 
+    nodeName: login
+    nodeText: ko
+  ↓Return [steps.ReturnStep-1790600000008]: 
 ↓bearer [steps.XMLConcatStep-1493474257025]: 
   nodeName: bearer
   output: false
@@ -37,18 +55,9 @@ comment: |
                   - ↑value: ./access_token/text()
             - java.lang.String: 
               - ↑value: ''
-↓SaveTokenInUserSession [steps.SessionSetStep-1493626828872]: 
-  expression: 
-    - xmlizable: 
-      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-      - SmartType: 
-        - ↑mode: SOURCE
-        - com.twinsoft.convertigo.beans.common.XMLVector: 
-          - java.lang.String: 
-            - ↑value: 1493474257025
-          - java.lang.String: 
-            - ↑value: ./text()
-  key: oAuthAccessToken
+↓NoLog_Call_Transaction [steps.SimpleStep-1799100000017]: 
+  comment: The request carries the Bearer of the user (Authorization header, traced by the Beans logger), no log of this call in this thread
+  expression: org.apache.log4j.MDC.put("nolog", true);
 ↓Call_Transaction [steps.TransactionStep-1493473336468]: 
   sourceTransaction: lib_OAuth.MicrosoftGraphApi.Me
   ↓__header_Authorization [variables.StepVariable-1493473345413]: 
@@ -60,6 +69,9 @@ comment: |
             - ↑value: 1493474257025
           - java.lang.String: 
             - ↑value: ./text()
+    visibility: '-1'
+↓Log_Call_Transaction [steps.SimpleStep-1799100000018]: 
+  expression: org.apache.log4j.MDC.remove("nolog");
 ↓IfExist [steps.IfExistThenElseStep-1493626951776]: 
   sourceDefinition: 
     - xmlizable: 
@@ -70,6 +82,34 @@ comment: |
         - java.lang.String: 
           - ↑value: ./document/object/userPrincipalName
   ↓jThen [steps.ThenStep-1493626951778]: 
+    ↓GraphUserId [steps.SimpleSourceStep-1790600000009]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1493473336468
+            - java.lang.String: 
+              - ↑value: ./document/object/id/text()
+      variableName: graph_user_id
+    ↓RejectOtherUser [steps.IfStep-1790600000010]: 
+      condition: '!libOAuthJwt.graphUserMatchesIdToken(graph_user_id, id_token_oid)'
+      ↓LoginRejected [steps.XMLElementStep-1790600000011]: 
+        nodeName: login
+        nodeText: ko
+      ↓Return [steps.ReturnStep-1790600000012]: 
+    ↓SaveTokenInUserSession [steps.SessionSetStep-1493626828872]: 
+      expression: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: SOURCE
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1493474257025
+              - java.lang.String: 
+                - ↑value: ./text()
+      key: oAuthAccessToken
     ↓login [steps.XMLElementStep-1493626951781]: 
       nodeName: login
       nodeText: ok
@@ -165,3 +205,7 @@ comment: |
       nodeName: login
       nodeText: ko
 ↓access_token [variables.RequestableVariable-1493470997723]: 
+  visibility: '-1'
+↓id_token [variables.RequestableVariable-1790600000013]: 
+  comment: The id_token returned with the access token by the OAuth action (response_type id_token+token). It is verified and must carry the at_hash of access_token.
+  visibility: '-1'

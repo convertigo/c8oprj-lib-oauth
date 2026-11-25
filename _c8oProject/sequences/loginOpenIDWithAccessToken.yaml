@@ -7,6 +7,26 @@ comment: |
   
   
 ↓Input_variables [steps.InputVariablesStep-1693388276584]: 
+↓TrustedIntrospectionEndpoint [steps.XMLElementStep-1789991000001]: 
+  nodeName: introspectURL
+  nodeText: ${lib_oauth.openid.instrospect_url}
+  output: false
+↓TrustedIntrospectionUrl [steps.SimpleSourceStep-1789991000006]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1789991000001
+        - java.lang.String: 
+          - ↑value: ./text()
+  variableName: trusted_introspection_url
+↓RequireTrustedIntrospectionScheme [steps.IfStep-1789991000007]: 
+  condition: '(function() { try { var u = new java.net.URI(String(trusted_introspection_url)); var scheme = String(u.getScheme()).toLowerCase(); var host = String(u.getHost()).toLowerCase(); return !((scheme == "https" || (scheme == "http" && (host == "localhost" || host == "127.0.0.1" || host == "::1"))) && u.getRawUserInfo() == null && u.getRawFragment() == null); } catch (e) { return true; } })()'
+  ↓LoginRejected [steps.XMLElementStep-1789991000008]: 
+    nodeName: login
+    nodeText: ko
+  ↓Return [steps.ReturnStep-1789991000009]: 
 ↓token [steps.XMLConcatStep-1693496055567]: 
   nodeName: token
   output: false
@@ -39,15 +59,18 @@ comment: |
                   - ↑value: ./access_token/text()
             - java.lang.String: 
               - ↑value: ''
+↓NoLog_Call_Transaction [steps.SimpleStep-1799100000019]: 
+  comment: The request carries the access token (body) and the client credentials (Basic Authorization header, traced by the Beans logger), no log of this call in this thread
+  expression: org.apache.log4j.MDC.put("nolog", true);
 ↓Call_Transaction [steps.TransactionStep-1693495799958]: 
   connectionStringDefinition: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
       - com.twinsoft.convertigo.beans.common.XMLVector: 
         - java.lang.String: 
-          - ↑value: 1693388276584
+          - ↑value: 1789991000001
         - java.lang.String: 
-          - ↑value: ./introspectURL/text()
+          - ↑value: ./text()
   sourceTransaction: lib_OAuth.OpenID.Introspect
   ↓__body [variables.StepVariable-1693495799960]: 
     sourceDefinition: 
@@ -58,6 +81,9 @@ comment: |
             - ↑value: 1693496055567
           - java.lang.String: 
             - ↑value: ./text()
+    visibility: '-1'
+↓Log_Call_Transaction [steps.SimpleStep-1799100000020]: 
+  expression: org.apache.log4j.MDC.remove("nolog");
 ↓IfExistThenElse [steps.IfExistStep-1693501846261]: 
   condition: IfExistThenElse
   sourceDefinition: 
@@ -67,66 +93,52 @@ comment: |
         - java.lang.String: 
           - ↑value: 1693495799958
         - java.lang.String: 
-          - ↑value: ./document/object/active[text() = 'true']
-  ↓SaveTokenInUserSession [steps.SessionSetStep-1693388276590]: 
-    expression: 
+          - ↑value: ./document/object[active = 'true' and string-length(normalize-space(sub)) > 0]
+  ↓TrustedSubject [steps.SimpleSourceStep-1789991000002]: 
+    sourceDefinition: 
       - xmlizable: 
-        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-        - SmartType: 
-          - ↑mode: SOURCE
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - java.lang.String: 
-              - ↑value: 1693388276584
-            - java.lang.String: 
-              - ↑value: ./access_token/text()
-    key: oAuthAccessToken
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1693495799958
+          - java.lang.String: 
+            - ↑value: ./document/object/sub/text()
+    variableName: introspected_sub
+  ↓IntrospectionResponse [steps.JsonSourceStep-1790600000014]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1693495799958
+          - java.lang.String: 
+            - ↑value: ./document/object
+    variableName: introspection_response
   ↓DecodeJWT [steps.SimpleStep-1693388427862]: 
+    comment: Verifies the introspection response and the access token (or the id_token for Microsoft) before any claim is used (see js/jwt_verify.js)
     expression: |
+      'include("js/jwt_verify.js");
+      // The introspection response is authoritative (active, sub, exp, iss, audience). A JWT access token is also
+      // verified (issuer JWKS, iss, audience, dates); for a Microsoft Graph access token, which only Microsoft can
+      // verify, the id_token sent with it is verified instead. Only verified claims are used.
+      var verification = libOAuthJwt.verifyOpenIdLogin(
+      	access_token == null ? "" : String(access_token),
+      	typeof introspection_response === "undefined" ? null : introspection_response,
+      	id_token == null ? "" : String(id_token));
+      access_token_verified = verification.ok;
+      jsonJWT = verification.ok ? verification.claims : {};
+      if (!verification.ok) {
+      	log.warn("(lib_OAuth.loginOpenIDWithAccessToken) access token rejected: " + verification.error);
+      } else {
+      	log.debug("(lib_OAuth.loginOpenIDWithAccessToken) access token accepted, claims from: " + verification.mode);
+      }
       '
-      
-      var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
-          // Regular expression to check formal correctness of base64 encoded strings
-          b64re = /^(?:[A-Za-z\d+\/]{4})*?(?:[A-Za-z\d+\/]{2}(?:==)?|[A-Za-z\d+\/]{3}=?)?$/;
-              
-      atob = function(string) {
-              // atob can work with strings with whitespaces, even inside the encoded part,
-              // but only \t, \n, \f, \r and '' '', which can be stripped.
-              string = String(string).replace(/[\t\n\f\r ]+/g, "");
-              if (!b64re.test(string))
-                  throw new TypeError("Failed to execute ''atob'' on ''Window'': The string to be decoded is not correctly encoded.");
-      
-              // Adding the padding if missing, for semplicity
-              string += "==".slice(2 - (string.length & 3));
-              var bitmap, result = "", r1, r2, i = 0;
-              for (; i < string.length;) {
-                  bitmap = b64.indexOf(string.charAt(i++)) << 18 | b64.indexOf(string.charAt(i++)) << 12
-                          | (r1 = b64.indexOf(string.charAt(i++))) << 6 | (r2 = b64.indexOf(string.charAt(i++)));
-      
-                  result += r1 === 64 ? String.fromCharCode(bitmap >> 16 & 255)
-                          : r2 === 64 ? String.fromCharCode(bitmap >> 16 & 255, bitmap >> 8 & 255)
-                          : String.fromCharCode(bitmap >> 16 & 255, bitmap >> 8 & 255, bitmap & 255);
-              }
-              return result;
-       };
-       
-      
-      token = access_token
-      // Récupérer le payload (seconde partie du token)
-      const base64Url = token.split(''.'')[1];
-        
-      // Corriger le padding de la chaîne Base64 si nécessaire
-      const base64 = base64Url.replace(''-'', ''+'').replace(''_'', ''/'');
-        
-      // Décoder la chaîne Base64 pour obtenir une chaîne JSON
-      const jsonPayload = decodeURIComponent(atob(base64).split('''').map(function(c) {
-          return ''%'' + (''00'' + c.charCodeAt(0).toString(16)).slice(-2);
-      }).join(''''));
-      
-      // Parse la chaîne JSON pour obtenir un objet JavaScript
-      jsonJWT =  JSON.parse(jsonPayload);
-      
-      log.warn(JSON.stringify(jsonJWT));
-       '
+  ↓RejectUnverifiedAccessToken [steps.IfStep-1790600000016]: 
+    condition: '!access_token_verified'
+    ↓LoginRejected [steps.XMLElementStep-1790600000017]: 
+      nodeName: login
+      nodeText: ko
+    ↓Return [steps.ReturnStep-1790600000018]: 
   ↓object [steps.JsonToXmlStep-1693470137902]: 
     jsonObject: 
       - xmlizable: 
@@ -140,6 +152,37 @@ comment: |
         - SmartType: 
           - ↑mode: PLAIN
           - →→: JWT
+  ↓RejectMismatchedSubject [steps.IfStep-1789991000003]: 
+    condition: 'String(jsonJWT.sub) != String(introspected_sub)'
+    ↓LoginRejected [steps.XMLElementStep-1789991000004]: 
+      nodeName: login
+      nodeText: ko
+    ↓Return [steps.ReturnStep-1789991000005]: 
+  ↓ReadGroups [steps.SimpleStep-1799700000004]: 
+    comment: Groups of the user when the symbol lib_oauth.openid.groups_claim names their claim, read from verified sources only (id_token, verified access token or introspection response, userinfo of the provider), never from a request value (see js/jwt_verify.js)
+    expression: |
+      'var openIdGroups = libOAuthJwt.openIdGroups(verification,
+      	access_token == null ? "" : String(access_token),
+      	typeof introspection_response === "undefined" ? null : introspection_response,
+      	id_token == null ? "" : String(id_token));
+      if (openIdGroups.enabled) {
+      	for (var groupsWarning = 0; groupsWarning < openIdGroups.warnings.length; groupsWarning++) {
+      		log.warn("(lib_OAuth.loginOpenIDWithAccessToken) groups: " + openIdGroups.warnings[groupsWarning]);
+      	}
+      	log.debug("(lib_OAuth.loginOpenIDWithAccessToken) groups: " + openIdGroups.state + ", " + openIdGroups.groups.length + " from " + (openIdGroups.source || "no source"));
+      }'
+  ↓SaveTokenInUserSession [steps.SessionSetStep-1693388276590]: 
+    expression: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: SOURCE
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1693388276584
+            - java.lang.String: 
+              - ↑value: ./access_token/text()
+    key: oAuthAccessToken
   ↓element [steps.XMLConcatStep-1693473513010]: 
     nodeName: authUser
     separator: ':'
@@ -166,9 +209,9 @@ comment: |
                 - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
                 - com.twinsoft.convertigo.beans.common.XMLVector: 
                   - java.lang.String: 
-                    - ↑value: 1693470137902
+                    - ↑value: 1693495799958
                   - java.lang.String: 
-                    - ↑value: ./sub/text()
+                    - ↑value: ./document/object/sub/text()
               - java.lang.String: 
                 - ↑value: ''
           - xmlizable: 
@@ -199,6 +242,21 @@ comment: |
               - ↑value: 1693473513010
             - java.lang.String: 
               - ↑value: ./text()
+  ↓KeepGroupsInSession [steps.SimpleStep-1799700000005]: 
+    comment: The groups and the authenticated user they belong to, kept on the server in the session key oAuthOpenIDGroups for the application (C8Oforms reads it in LoginOpenID); the key is removed when the claim is not configured
+    expression: |
+      'if (openIdGroups.enabled) {
+      	context.httpSession.setAttribute("oAuthOpenIDGroups", JSON.stringify({
+      		user: String(context.getAuthenticatedUser()),
+      		claim: openIdGroups.claim,
+      		state: openIdGroups.state,
+      		groups: openIdGroups.groups,
+      		source: openIdGroups.source,
+      		at: new Date().getTime()
+      	}));
+      } else {
+      	context.httpSession.removeAttribute("oAuthOpenIDGroups");
+      }'
   ↓Call_Sequence [steps.SequenceStep-1694707534295]: 
     sourceSequence: lib_OAuth.setLastConnected
     ↓user [variables.StepVariable-1694707534298]: 
@@ -228,9 +286,10 @@ comment: |
           - ↑value: ./document/object/error_description
 ↓access_token [variables.RequestableVariable-1693388276623]: 
   comment: The JWT acess Token
-↓introspectURL [variables.RequestableVariable-1693495840683]: 
-  comment: The URL to call to instrospect and validate the TWT token
-  value: ${lib_oauth.openid.instrospect_url}
+  visibility: '-1'
+↓id_token [variables.RequestableVariable-1790600000019]: 
+  comment: The id_token returned with the access token (response_type id_token+token). Required to verify Microsoft Graph access tokens, which carry a nonce header; it must carry the at_hash of access_token.
+  visibility: '-1'
 ↓TestOK [core.TestCase]: 
   ↓access_token [variables.TestCaseVariable-1693496969990]: 
     value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c

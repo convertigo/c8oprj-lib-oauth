@@ -5,11 +5,17 @@ port: 443
 server: graph.microsoft.com
 ↓default [transactions.HttpTransaction]: 
   ↑default: true
-  accessibility: Public
+  accessibility: Private
   subDir: me/
 ↓groups [transactions.JsonHttpTransaction]: 
-  accessibility: Public
+  accessibility: Private
   subDir: groups
+  ↓__header_Authorization [variables.RequestableHttpVariable-1799100000003]: 
+    comment: Bearer access token of the user, sent as the Authorization header
+    visibility: '-1'
 ↓Me [transactions.JsonHttpTransaction]: 
-  accessibility: Public
+  accessibility: Private
   subDir: me
+  ↓__header_Authorization [variables.RequestableHttpVariable-1799100000004]: 
+    comment: Bearer access token of the user, sent as the Authorization header
+    visibility: '-1'

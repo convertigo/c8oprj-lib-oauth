@@ -16,6 +16,9 @@ comment: |
           - ↑value: 1493887163175
         - java.lang.String: 
           - ↑value: ./expression
+  ↓NoLog_Call_Transaction [steps.SimpleStep-1799100000021]: 
+    comment: The request carries the Bearer of the user (Authorization header, traced by the Beans logger), no log of this call in this thread
+    expression: org.apache.log4j.MDC.put("nolog", true);
   ↓Call_Transaction [steps.TransactionStep-1494098855221]: 
     sourceTransaction: lib_OAuth.MicrosoftGraphApi.Me
     ↓__header_Authorization [variables.StepVariable-1493887231390]: 
@@ -27,6 +30,9 @@ comment: |
               - ↑value: 1493887163175
             - java.lang.String: 
               - ↑value: ./expression/text()
+      visibility: '-1'
+  ↓Log_Call_Transaction [steps.SimpleStep-1799100000022]: 
+    expression: org.apache.log4j.MDC.remove("nolog");
   ↓IfExist [steps.IfExistThenElseStep-1742321981961]: 
     condition: IfExist
     sourceDefinition: 
